@@ -1,3 +1,5 @@
+print("Set.lua")
+
 vim.opt.termguicolors = true
 
 vim.opt.nu = true
