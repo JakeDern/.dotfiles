@@ -1,1 +1,3 @@
-require("packer")
+require("normal.packer")
+require("normal.remap")
+
