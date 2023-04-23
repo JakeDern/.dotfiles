@@ -6,4 +6,8 @@ function ApplyColors()
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
-ApplyColors()
+if vim.g.vscode then
+    ApplyColors()
+end
+
+

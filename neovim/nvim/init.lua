@@ -9,6 +9,14 @@ local ensure_packer = function()
   return false
 end
 
-ensure_packer()
-require("jakedern")
+-- Always import common
+require("common")
 
+-- Check for vscode mode and only setup packer
+-- if we're in normal nvim
+if vim.g.vscode then
+    require("vscode")
+else
+    require("normal")
+    ensure_packer()
+end
