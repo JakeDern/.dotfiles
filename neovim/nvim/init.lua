@@ -17,6 +17,6 @@ require("common")
 if vim.g.vscode then
     require("vscode_lua")
 else
-    require("normal")
     ensure_packer()
+    require("normal")
 end
