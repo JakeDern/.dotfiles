@@ -10,5 +10,5 @@ vim.keymap.set("n", "<C-j>", "<cmd>call VSCodeNotify('workbench.action.openEdito
 vim.keymap.set("n", "<C-k>", "<cmd>call VSCodeNotify('workbench.action.openEditorAtIndex3')<CR>")
 vim.keymap.set("n", "<C-l>", "<cmd>call VSCodeNotify('workbench.action.openEditorAtIndex4')<CR>")
 
-vim.keymap.set("n", "<leader>fk", "<cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>")
-vim.keymap.set("n", "<leader>fj", "<cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>")
+vim.keymap.set("n", "<leader>fl", "<cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>")
+vim.keymap.set("n", "<leader>fh", "<cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>")
