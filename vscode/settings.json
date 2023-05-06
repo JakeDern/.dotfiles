@@ -1,0 +1,10 @@
+{
+    "vscode-neovim.neovimExecutablePaths.linux": "/home/jakedern/bin/nvim.appimage",
+    "vscode-neovim.neovimExecutablePaths.win32": "/home/jakedern/bin/nvim.appimage",
+    "vscode-neovim.useWSL": true,
+    "vscode-neovim.logLevel": "debug",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "workbench.colorTheme": "gruvboxConcoctis dark soft"
+}
