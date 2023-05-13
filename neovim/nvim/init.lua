@@ -11,12 +11,17 @@ end
 
 -- Always import common
 require("common")
+local new_install = ensure_packer()
 
 -- Check for vscode mode and only setup packer
 -- if we're in normal nvim
 if vim.g.vscode then
     require("vscode_lua")
 else
-    ensure_packer()
     require("normal")
+end
+
+-- After all other loading, trigger a packer sync
+if new_install then
+    require('packer').sync()
 end
