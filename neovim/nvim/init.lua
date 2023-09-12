@@ -1,8 +1,8 @@
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
     return true
   end
@@ -16,12 +16,12 @@ local new_install = ensure_packer()
 -- Check for vscode mode and only setup packer
 -- if we're in normal nvim
 if vim.g.vscode then
-    require("vscode_lua")
+  require("vscode_lua")
 else
-    require("normal")
+  require("normal")
 end
 
 -- After all other loading, trigger a packer sync
 if new_install then
-    require('packer').sync()
+  require('packer').sync()
 end
