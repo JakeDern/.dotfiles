@@ -41,8 +41,6 @@ return {
           -- For light themes, set to 'black' or similar.
           fg = 'white', bold = true, nocombine = true,
         })
-
-        
       end,
     },
   
