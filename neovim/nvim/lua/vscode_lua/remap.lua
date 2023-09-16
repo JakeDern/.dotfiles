@@ -12,8 +12,8 @@ vim.keymap.set("n", "<C-k>", "<cmd>call VSCodeNotify('workbench.action.openEdito
 vim.keymap.set("n", "<C-l>", "<cmd>call VSCodeNotify('workbench.action.openEditorAtIndex4')<CR>")
 
 -- Swap windows left or right
-vim.keymap.set("n", "<leader>fl", "<cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>")
-vim.keymap.set("n", "<leader>fh", "<cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>")
+vim.keymap.set("n", "<S-l>", "<cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>")
+vim.keymap.set("n", "<S-h>", "<cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>")
 
 -- Open file explorer
 vim.keymap.set("n", "<leader>fe", "<cmd>call VSCodeNotify('workbench.view.explorer')<CR>")
