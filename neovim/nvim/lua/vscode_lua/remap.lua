@@ -1,7 +1,9 @@
 -- Misc
-vim.keymap.set("n", "<leader>pp", "<cmd>call VSCodeNotifyVisual('workbench.action.showCommands', 1)<CR>")
+
+-- Command Pallet
+vim.keymap.set("n", "<leader>cp", "<cmd>call VSCodeNotify('workbench.action.showCommands')<CR>")
 vim.keymap.set("n", "<leader>w", "<cmd>call VSCodeNotify('workbench.action.closeActiveEditor')<CR>")
-vim.keymap.set("n", "<leader>g", "<cmd>call VSCodeNotify('workbench.action.quickOpen')<CR>")
+vim.keymap.set("n", "<leader><leader>", "<cmd>call VSCodeNotify('workbench.action.quickOpen')<CR>")
 vim.keymap.set("n", "<leader>ps", "<cmd>call VSCodeNotify('workbench.action.findInFiles')<CR>")
 vim.keymap.set("n", "<leader>pr", "<cmd>call VSCodeNotify('workbench.action.replaceInFiles')<CR>")
 
@@ -15,7 +17,11 @@ vim.keymap.set("n", "<C-l>", "<cmd>call VSCodeNotify('workbench.action.openEdito
 vim.keymap.set("n", "<S-l>", "<cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>")
 vim.keymap.set("n", "<S-h>", "<cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>")
 
+-- Split editor rigth and down
+vim.keymap.set("n", "<leader>-", "<cmd>call VSCodeNotify('workbench.action.splitEditorDown')<CR>")
+vim.keymap.set("n", "<leader>|", "<cmd>call VSCodeNotify('workbench.action.splitEditorRight')<CR>")
+
 -- Open file explorer
-vim.keymap.set("n", "<leader>fe", "<cmd>call VSCodeNotify('workbench.view.explorer')<CR>")
+vim.keymap.set("n", "<leader>e", "<cmd>call VSCodeNotify('workbench.view.explorer')<CR>")
 -- Toggle file explorer
-vim.keymap.set("n", "<leader>ff", "<cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>")
+-- vim.keymap.set("n", "<leader>e", "<cmd>call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>")

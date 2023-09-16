@@ -16,10 +16,8 @@
     "[typescript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "diffEditor.ignoreTrimWhitespace": false,
-    "editor.minimap.enabled": false,
-    "editor.fontSize": 18,
+
+    // Terminal
     "terminal.integrated.profiles.windows": {
         "PowerShell": {
             "source": "PowerShell",
@@ -49,8 +47,8 @@
         }
     },
     "terminal.integrated.defaultProfile.windows": "Ubuntu-20.04 (WSL)",
-    "extensions.ignoreRecommendations": true,
-    "editor.lineNumbers": "relative",
+    
+    // Neovim settings
     "vscode-neovim.neovimExecutablePaths.linux": "/home/jakedern/bin/nvim.appimage",
     "vscode-neovim.neovimExecutablePaths.win32": "/home/jakedern/bin/nvim.appimage",
     "vscode-neovim.useWSL": true,
@@ -58,5 +56,15 @@
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
-    "workbench.colorTheme": "gruvboxConcoctis dark soft",
+
+    // Workbench
+    "workbench.colorTheme": "Tokyo Night",
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.editor.highlightModifiedTabs": true,
+
+    // Editor
+    "editor.lineNumbers": "relative",
+    "editor.minimap.enabled": false,
+    "editor.fontSize": 18,
+    "diffEditor.ignoreTrimWhitespace": false,
 }
