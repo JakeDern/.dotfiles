@@ -34,6 +34,15 @@ return {
         leap.add_default_mappings(true)
         vim.keymap.del({ "x", "o" }, "x")
         vim.keymap.del({ "x", "o" }, "X")
+
+        -- Highlight text that that is being searched 
+        vim.api.nvim_set_hl(0, 'LeapBackdrop', { link = 'Comment' }) -- or some grey
+        vim.api.nvim_set_hl(0, 'LeapMatch', {
+          -- For light themes, set to 'black' or similar.
+          fg = 'white', bold = true, nocombine = true,
+        })
+
+        
       end,
     },
   
