@@ -1,5 +1,9 @@
 # Lazy vim setup notes
 
+## Debugging
+
+Log file locations: `~/.local/state/nvim/lsp.log`
+
 ## LSP Support
 
 ### TypeScript: tsserver

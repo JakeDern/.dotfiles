@@ -10,10 +10,18 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
+    -- "LazyVim/LazyVim" is the repo to clone, "lazyvim.plugins" is the lua module to import after
     { "LazyVim/LazyVim",                                import = "lazyvim.plugins" },
-    -- import any extras modules here
+
+    -- Language mods
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.json" },
+    { import = "lazyvim.plugins.extras.lang.yaml" },
+    { import = "lazyvim.plugins.extras.lang.go" },
+
+    -- copilot
+    { import = "lazyvim.plugins.extras.coding.copilot" },
+
     -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- import/override with your plugins
     { import = "plugins" },
