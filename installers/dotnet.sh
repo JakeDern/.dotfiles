@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Check if dotnet is installed and install it if not
-
-
 # Add microsoft source
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb > /dev/null 2>&1
 sudo dpkg -i packages-microsoft-prod.deb > /dev/null 2>&1
