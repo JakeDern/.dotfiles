@@ -1,4 +1,2 @@
-print("normal init.lua")
-
-require("normal.remap")
+require("normal.config")
 require("normal.lazy")
