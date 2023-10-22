@@ -1,4 +1,3 @@
-print("lsp.lua")
 return {
     {
     -- LSP Configuration & Plugins
