@@ -1,5 +1,4 @@
 -- Map leader first thing
-print("Root init.lua")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
