@@ -1,4 +1,5 @@
-setup = function()
+-- Configure plugin settings and load extensions here 
+local setup = function()
     require('telescope').setup({
     
     })
@@ -7,12 +8,21 @@ setup = function()
     require('telescope').load_extension('fzf')
 end
 
+-- Configure telescope specific keybindings here
+local keymaps = function()
+    builtin = require('telescope.builtin')
+    vim.keymap.set('n', '<leader><leader>', builtin.git_files, {})
+end
+
 return {
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.4',
         dependencies = { 'nvim-lua/plenary.nvim' },
+
+        -- config is run when the plugin is loaded
         config = function()
             setup()
+            keymaps()
         end,
     },
     -- Provides faster and better matching methods. Written in C which is why
