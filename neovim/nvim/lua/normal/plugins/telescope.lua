@@ -12,6 +12,9 @@ end
 local keymaps = function()
     builtin = require('telescope.builtin')
     vim.keymap.set('n', '<leader><leader>', builtin.git_files, {})
+    -- Telescope grep_string search=foo 
+    vim.keymap.set('n', '<leader>fs', builtin.grep_string, {})
+    vim.keymap.set('n', '<leader>s', builtin.live_grep, {})
 end
 
 return {
@@ -29,5 +32,4 @@ return {
     -- we have to `make` to install
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
 }
-
 
