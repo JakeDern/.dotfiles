@@ -32,6 +32,8 @@ return {
           leap.opts[k] = v
         end
         leap.add_default_mappings(true)
+        -- IMPORTANT: These override your cut functionality
+        -- if you don't remove them
         vim.keymap.del({ "x", "o" }, "x")
         vim.keymap.del({ "x", "o" }, "X")
 

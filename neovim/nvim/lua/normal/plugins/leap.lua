@@ -2,6 +2,11 @@ local setup = function()
     local leap = require('leap')
     leap.add_default_mappings()
 
+    -- IMPORTANT: These will override cut functionality
+    -- if you don't remove them
+    vim.keymap.del({ "x", "o" }, "x")
+    vim.keymap.del({ "x", "o" }, "X")
+
     -- There's some race condition with highlight colors that this
     -- solves
     leap.init_highlight(true)
