@@ -1,15 +1,14 @@
 -- Configure plugin settings and load extensions here 
 local setup = function()
     require('telescope').setup({
-       -- Load these keybinds only inside telescope
        defaults = {
            mappings = {
-       -- Load these keybinds only inside telescope
-               i = {
+                -- Load these keybinds only inside telescope
+                i = {
 
-               }
-           }
-       }
+                }
+            }
+        }
     })
 
     -- Extension must be loaded after telescope setup is run
