@@ -7,3 +7,5 @@
 [ ] Figure out difference between vim.cmd.Ex and closing a window
 [ ] Figure out how to comment lines
 [ ] Figure out a good git plugin
+[ ] Search just current file in telescope
+[ ] Figure out copilot integration
