@@ -19,7 +19,7 @@ end
 
 -- Configure telescope specific keybindings here
 local keymaps = function()
-    builtin = require('telescope.builtin')
+    local builtin = require('telescope.builtin')
     vim.keymap.set('n', '<leader><leader>', builtin.git_files, {})
     -- Telescope grep_string search=foo 
     -- vim.keymap.set('n', '<leader>fs', builtin.grep_string, {})

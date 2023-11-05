@@ -11,3 +11,4 @@
 [ ] Figure out copilot integration
 [x] Dev icons
 [ ] Figure out how to install fonts to fix up dev icons
+[ ] Figure out how to do symbol rename
