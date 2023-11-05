@@ -9,3 +9,5 @@
 [ ] Figure out a good git plugin
 [ ] Search just current file in telescope
 [ ] Figure out copilot integration
+[x] Dev icons
+[ ] Figure out how to install fonts to fix up dev icons

@@ -3,8 +3,9 @@ local setup = function()
     require('telescope').setup({
        defaults = {
            mappings = {
-                -- Load these keybinds only inside telescope
+                -- Loads these keybinds only inside telescope
                 i = {
+                    -- Select next/previous using ctrl j/k
                     ["<C-j>"] = "move_selection_next",
                     ["<C-k>"] = "move_selection_previous",
                 }
