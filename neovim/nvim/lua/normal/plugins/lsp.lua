@@ -1,8 +1,17 @@
+local on_attach = function()
+    print("On attach func")
+    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+end
+
 -- Configure plugin settings and load extensions here 
 local setup = function()
+
+ 
+
    require('lspconfig').gopls.setup({
-    
-   }) 
+        on_attach = on_attach
+    }) 
 end
 
 -- Configure telescope specific keybindings here
