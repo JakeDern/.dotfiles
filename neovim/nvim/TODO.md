@@ -14,3 +14,4 @@
 [ ] Figure out how to do symbol rename
 [ ] Add keymapping for opening nvim config files in telescope
 [ ] Look into oil.nvim
+[ ] Figure out how to render hover text in markdown so links work
