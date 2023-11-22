@@ -1,8 +1,8 @@
 -- On_attach function which will set keymaps only when an lsp is attached to a
 -- buffer. These keymaps are wiped out when the buffer un-attaches.
 local on_attach = function() print("On attach func")
-    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 end
 
 -- Configure plugin settings and load extensions here 
