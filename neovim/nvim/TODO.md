@@ -12,3 +12,4 @@
 [x] Dev icons
 [ ] Figure out how to install fonts to fix up dev icons
 [ ] Figure out how to do symbol rename
+[ ] Add keymapping for opening nvim config files in telescope
