@@ -8,9 +8,11 @@ local opts = {
 local on_attach = function()
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
-    -- Mapping this here so that it's only mapped on_attach
-    vim.keymap.set("n", "gr", require('telescope.builtin').lsp_references, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+
+    -- Mapping these telescope ones here so that it's only mapped on_attach
+    vim.keymap.set("n", "gr", require('telescope.builtin').lsp_references, opts)
+    vim.keymap.set("n", "gi", require('telescope.builtin').lsp_implementations, opts)
 end
 
 -- Configure plugin settings and load extensions here 
