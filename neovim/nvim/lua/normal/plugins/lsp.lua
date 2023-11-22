@@ -7,6 +7,7 @@ local opts = {
 -- buffer. These keymaps are wiped out when the buffer un-attaches.
 local on_attach = function()
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
     -- Mapping this here so that it's only mapped on_attach
     vim.keymap.set("n", "gr", require('telescope.builtin').lsp_references, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
