@@ -18,7 +18,7 @@ local on_attach = function()
     -- diagnostics
     vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, opts)
-    vim.keymap.set("n", "<leader>ds", telescope.diagnostics, opts)
+    vim.keymap.set("n", "<leader>dl", telescope.diagnostics, opts)
 end
 
 -- Configure plugin settings and load extensions here 
