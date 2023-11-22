@@ -16,3 +16,4 @@
 [ ] Look into oil.nvim
 [ ] Figure out how to render hover text in markdown so links work
 [ ] Try to fix live grep for telescope
+[ ] Treesitter
