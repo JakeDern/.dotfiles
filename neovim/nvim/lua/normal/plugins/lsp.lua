@@ -9,15 +9,16 @@ local on_attach = function()
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-
+    
     -- Mapping these telescope ones here so that it's only mapped on_attach
-    vim.keymap.set("n", "gr", require('telescope.builtin').lsp_references, opts)
-    vim.keymap.set("n", "gi", require('telescope.builtin').lsp_implementations, opts)
+    local telescope = require('telescope.builtin') 
+    vim.keymap.set("n", "gr", telescope.lsp_references, opts)
+    vim.keymap.set("n", "gi", telescope.lsp_implementations, opts)
 
     -- diagnostics
     vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, opts)
-    vim.keymap.set("n", "<leader>ds",  require('telescope.builtin').diagnostics, opts)
+    vim.keymap.set("n", "<leader>ds", telescope.diagnostics, opts)
 end
 
 -- Configure plugin settings and load extensions here 
