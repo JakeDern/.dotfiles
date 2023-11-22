@@ -22,7 +22,7 @@ local keymaps = function()
     local builtin = require('telescope.builtin')
     vim.keymap.set('n', '<leader><leader>', builtin.git_files, {})
     -- Telescope grep_string search=foo 
-    -- vim.keymap.set('n', '<leader>fs', builtin.grep_string, {})
+    vim.keymap.set('n', '<leader>ps', builtin.grep_string, {})
     vim.keymap.set('n', '<C-f>', function() builtin.current_buffer_fuzzy_find({
         sorting_strategy = "ascending",
         layout_config = {prompt_position = "top"}
