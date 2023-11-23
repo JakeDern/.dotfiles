@@ -29,6 +29,11 @@ local setup = function()
    require('lspconfig').gopls.setup({
         on_attach = on_attach
     }) 
+    
+    -- Add borders to help hover text
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = "rounded",
+    })
 end
 
 -- Configure keymaps that should apply globally all the time here
