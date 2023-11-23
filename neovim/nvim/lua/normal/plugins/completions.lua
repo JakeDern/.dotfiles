@@ -29,7 +29,9 @@ local setup = function()
   -- Set up lspconfig.
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
   -- Add an entry for every lsp server in here
-  require('lspconfig')['gopls'].setup {
+  -- TODO: This seems to break/override my lsp setup for gopls. keymaps
+  -- stop working when I fill this out. Not sure why
+  require('lspconfig')[''].setup {
     capabilities = capabilities
   }
 end
