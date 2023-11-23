@@ -1,3 +1,5 @@
+-- Configuration for all of this taken from
+-- https://github.com/fredrikaverpil/dotfiles/blob/main/nvim-lazyvim/lua/plugins/ai.lua
 return {
   -- custom config which piggybacks on the copilot extras in lazy.lua.
   {
