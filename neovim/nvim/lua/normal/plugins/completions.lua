@@ -4,8 +4,8 @@ local setup = function()
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
       end,
     },
     window = {
@@ -21,8 +21,8 @@ local setup = function()
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'vsnip' }, -- For vsnip users.
-      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'vsnip' }, -- For vsnip users.
+      { name = 'luasnip' }, -- For luasnip users.
     }, {
       { name = 'buffer' },
     })
@@ -40,7 +40,7 @@ local setup = function()
   -- Set up lspconfig.
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
   -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-  require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
+  require('lspconfig')['gopls'].setup {
     capabilities = capabilities
   }
 end
@@ -61,9 +61,11 @@ return {
           'hrsh7th/cmp-path',
             
           -- Snippet plugin for actually doing the completion
-          'hrsh7th/vim-vsnip',
+          -- 'hrsh7th/vim-vsnip',
           -- Actually integrates the snipped plugin with lsp stuff
-          'hrsh7th/vim-vsnip-integ'
+          -- 'hrsh7th/vim-vsnip-integ'
+          'L3MON4D3/LuaSnip',
+          'saadparwaiz1/cmp_luasnip',
     },
     config = function()
         setup()
