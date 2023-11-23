@@ -18,3 +18,4 @@
 [ ] Try to fix live grep for telescope
 [ ] Treesitter
 [ ] See about making nvim-cmp lazy loaded, takes forever to startup
+[ ] Improve sorting for snippets
