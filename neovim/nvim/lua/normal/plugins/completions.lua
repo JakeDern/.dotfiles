@@ -19,18 +19,22 @@ local setup = function()
       -- Based off of https://github.com/fredrikaverpil/dotfiles/blob/main/nvim-lazyvim/lua/plugins/cmp.lua
       ['<Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+            print("cmp visible")
+            cmp.select_next_item()
           elseif require("copilot.suggestion").is_visible() then
             require("copilot.suggestion").accept()
           else
+            print("cmp not visible")
             fallback()
           end
         end, { "i", "s" }),
       -- Based off of https://github.com/fredrikaverpil/dotfiles/blob/main/nvim-lazyvim/lua/plugins/cmp.lua
       ['<S-Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+            print("cmp visible")
+            cmp.select_prev_item()
           else
+            print("cmp not visible")
             fallback()
           end
         end, { "i", "s" }),
