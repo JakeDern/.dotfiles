@@ -1,7 +1,7 @@
 # List of things to figure out in neovim
 
 [ ] Find and replace text in selected lines
-[ ] Install and configure lsp
+[x] Install and configure lsp
 [x] Figure out how to re-map C-j and C-k just within the context of telescope
 [ ] Figure out how to do a Telescope Grep string with some shortcut
 [ ] Figure out difference between vim.cmd.Ex and closing a window
@@ -19,3 +19,4 @@
 [ ] Treesitter
 [ ] See about making nvim-cmp lazy loaded, takes forever to startup
 [ ] Improve sorting for snippets
+[ ] Git diff plugin
