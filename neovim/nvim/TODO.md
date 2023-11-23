@@ -8,7 +8,7 @@
 [ ] Figure out how to comment lines
 [ ] Figure out a good git plugin
 [x] Search just current file in telescope
-[ ] Figure out copilot integration
+[x] Figure out copilot integration
 [x] Dev icons
 [ ] Figure out how to install fonts to fix up dev icons
 [x] Figure out how to do symbol rename
