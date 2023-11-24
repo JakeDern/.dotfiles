@@ -7,7 +7,9 @@ return {
     "nvim-treesitter/nvim-treesitter",
     version = false, -- last release is way too old and doesn't work on Windows
     build = ":TSUpdate",
-    event = { "VeryLazy" },
+    -- This plugin has long startup time. The first three events are the same as
+    -- "LazyFile" from lazyvim. Copied them from there.
+    event = { "BufReadPost", "BufNewFile", "BufWritePre", "VeryLazy" },
     dependencies = {
       {
         "nvim-treesitter/nvim-treesitter-textobjects",
@@ -17,6 +19,16 @@ return {
     opts = {
       highlight = { enable = true },
       indent = { enable = true },
+      incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = "gnn", -- set to `false` to disable one of the mappings
+            node_incremental = "grn",
+            scope_incremental = "grc",
+            node_decremental = "grm",
+        },
+      },
+
       ensure_installed = {
         "bash",
         -- "c",

@@ -16,7 +16,8 @@
 [ ] Look into oil.nvim
 [ ] Figure out how to render hover text in markdown so links work
 [ ] Try to fix live grep for telescope
-[ ] Treesitter
+[x] Treesitter
+[ ] Treesitter incremental selection setup
 [ ] See about making nvim-cmp lazy loaded, takes forever to startup
 [ ] Improve sorting for snippets
 [ ] Git diff plugin

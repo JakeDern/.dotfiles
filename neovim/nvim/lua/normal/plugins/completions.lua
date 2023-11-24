@@ -78,6 +78,7 @@ return {
           -- Actually integrates the snippet plugin with lsp stuff
           'saadparwaiz1/cmp_luasnip',
     },
+    event = 'InsertEnter',
     config = function()
         setup()
         keymaps()

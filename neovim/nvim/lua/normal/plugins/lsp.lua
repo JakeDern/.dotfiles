@@ -56,6 +56,9 @@ return {
           -- TODO
           -- { 'folke/neodev.nvim', opts = {} },
     },
+    -- This plugin has long startup time. These events are the same as
+    -- "LazyFile" from lazyvim. Copied them from there.
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     config = function()
         setup()
         keymaps()
