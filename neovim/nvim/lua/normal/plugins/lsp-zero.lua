@@ -1,10 +1,14 @@
 local setup = function(_, opts)
+    -- Neodev setup must be done before lspconfig, so putting it first so that
+    -- whatever lsp_zero does will be accounted for
+    require("neodev").setup({})
+
     ---
     -- LSP setup
     ---
     local lsp_zero = require('lsp-zero')
 
-    lsp_zero.on_attach(function(client, bufnr)
+    lsp_zero.on_attach(function(_, bufnr)
         opts = {buffer = bufnr}
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
         vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
@@ -12,7 +16,7 @@ local setup = function(_, opts)
         vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
 
         -- Mapping these telescope ones here so that it's only mapped on_attach
-        local telescope = require('telescope.builtin') 
+        local telescope = require('telescope.builtin')
         vim.keymap.set("n", "gr", telescope.lsp_references, opts)
         vim.keymap.set("n", "gi", telescope.lsp_implementations, opts)
 
@@ -85,6 +89,7 @@ return {
             },
             {'williamboman/mason.nvim'},
             {'williamboman/mason-lspconfig.nvim'},
+            { "folke/neodev.nvim", opts = {} },
         },
     },
 }
