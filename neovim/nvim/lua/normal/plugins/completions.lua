@@ -1,3 +1,6 @@
+-- Archiving while I try out lsp-zero
+return {}
+
 local setup = function()
     local cmp = require('cmp')
     cmp.setup({
