@@ -1,6 +1,3 @@
--- Archiving while I try out lsp-zero
-return {}
-
 -- Common options for each remap
 local opts = {
     buffer = 0 -- Map this key only for the current buffer
