@@ -1,3 +1,3 @@
-require("normal.packer")
-require("normal.remap")
+require("normal.config")
+require("normal.lazy")
 
