@@ -32,13 +32,13 @@ return {
                 },
             },
             {
-                'hrsh7th/nvim-cmp'
+                'hrsh7th/nvim-cmp',
                 dependencies = {
                     {'L3MON4D3/LuaSnip'},
                 },
             },
             {'williamboman/mason.nvim'},
             {'williamboman/mason-lspconfig.nvim'},
-        }
+        },
     },
 }
