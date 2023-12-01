@@ -1,5 +1,3 @@
-vim.opt.termguicolors = true
-
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -29,4 +27,4 @@ vim.opt.termguicolors = true -- Supposedly better terminal colors
 
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-
+vim.opt.foldenable = false
