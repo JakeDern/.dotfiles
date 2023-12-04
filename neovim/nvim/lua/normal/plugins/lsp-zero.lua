@@ -33,7 +33,7 @@ local setup = function(_, opts)
         }
     })
 
-    lsp_zero.setup_servers({'gopls'})
+    lsp_zero.setup_servers({'gopls', 'omnisharp', 'bicep'})
 
     ---
     -- CMP setup
