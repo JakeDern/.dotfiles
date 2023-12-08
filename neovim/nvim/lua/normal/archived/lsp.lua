@@ -12,7 +12,7 @@ local on_attach = function()
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
 
     -- Mapping these telescope ones here so that it's only mapped on_attach
-    local telescope = require('telescope.builtin') 
+    local telescope = require('telescope.builtin')
     vim.keymap.set("n", "gr", telescope.lsp_references, opts)
     vim.keymap.set("n", "gi", telescope.lsp_implementations, opts)
 
@@ -28,8 +28,8 @@ local setup = function()
     -- Each language server will need to have its own on_attach configured
    require('lspconfig').gopls.setup({
         on_attach = on_attach
-    }) 
-    
+    })
+
     -- Add borders to help hover text
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         border = "rounded",
@@ -38,7 +38,7 @@ end
 
 -- Configure keymaps that should apply globally all the time here
 local keymaps = function()
-    
+
 end
 
 return {
