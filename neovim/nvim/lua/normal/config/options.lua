@@ -7,7 +7,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
-vim.opt.wrap = true
+vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -22,7 +22,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
-vim.opt.autowrite = true -- Automatically writes before a lot of jumps to other files
+vim.opt.autowrite = true     -- Automatically writes before a lot of jumps to other files
 vim.opt.termguicolors = true -- Supposedly better terminal colors
 
 vim.opt.foldmethod = 'expr'
