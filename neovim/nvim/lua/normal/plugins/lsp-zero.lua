@@ -21,11 +21,12 @@ local setup = function(_, opts)
     vim.keymap.set("n", "gr", telescope.lsp_references, opts)
     vim.keymap.set("n", "gi", telescope.lsp_implementations, opts)
 
-    -- diagnostics
+    -- Diagnostics
     vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, opts)
     vim.keymap.set("n", "<leader>dl", telescope.diagnostics, opts)
 
+    -- Auto formatting on save
     if client.supports_method("textDocument/formatting") then
       vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
       vim.api.nvim_create_autocmd("BufWritePre", {
