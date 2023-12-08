@@ -3,7 +3,7 @@
 - [x] Find and replace text in selected lines
 - [x] Install and configure lsp
 - [x] Figure out how to re-map C-j and C-k just within the context of telescope
-- [ ] Figure out how to do a Telescope Grep string with some shortcut
+- [x] Figure out how to do a Telescope Grep string with some shortcut
 - [ ] Figure out difference between vim.cmd.Ex and closing a window
 - [ ] Figure out how to comment lines
 - [ ] Figure out a good git plugin
@@ -18,5 +18,6 @@
 - [ ] Try to fix live grep for telescope
 - [x] Treesitter
 - [ ] Treesitter incremental selection setup
-- [ ] See about making nvim-cmp lazy loaded, takes forever to startup
+- [x] See about making nvim-cmp lazy loaded, takes forever to startup
 - [ ] Git diff plugin
+- [ ] Bind key for next/previous in quick fix list
