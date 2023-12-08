@@ -22,7 +22,7 @@ local setup = function()
 
   -- Extension must be loaded after telescope setup is run
   require('telescope').load_extension('fzf')
-  require('telescope').load_extension('ui-select')
+  -- require('telescope').load_extension('ui-select')
 end
 
 -- Configure telescope specific keybindings here
