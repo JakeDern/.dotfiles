@@ -1,6 +1,7 @@
 -- Bunch of small plugins with minimal configuration in this file
 return {
-  {'tpope/vim-fugitive'},
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+  { 'tpope/vim-fugitive' },
   {
     'numToStr/Comment.nvim',
     opts = {
@@ -16,7 +17,7 @@ return {
       -- Maps Ctrl+/ to toggle multiple selected linewise
       -- This was taken from the Comments.Nvim api code
       -- https://github.com/numToStr/Comment.nvim/blob/master/lua/Comment/api.lua
-      local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true) 
+      local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
       vim.keymap.set('x', '<C-_>', function()
         vim.api.nvim_feedkeys(esc, 'nx', false)
         require('Comment.api').toggle.linewise(vim.fn.visualmode())
