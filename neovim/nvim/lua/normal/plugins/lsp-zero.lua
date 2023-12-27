@@ -14,7 +14,7 @@ local setup = function(_, opts)
     vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "<leader>.", vim.lsp.buf.code_action, opts)
 
     -- Mapping these telescope ones here so that it's only mapped on_attach
     local telescope = require('telescope.builtin')
