@@ -21,3 +21,4 @@
 - [x] See about making nvim-cmp lazy loaded, takes forever to startup
 - [ ] Git diff plugin
 - [ ] Bind key for next/previous in quick fix list
+- [ ] Change FTPlugins to set `vim.opt_local` instead of `vim.opt`
