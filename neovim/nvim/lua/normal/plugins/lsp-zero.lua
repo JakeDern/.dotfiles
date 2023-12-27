@@ -24,6 +24,7 @@ local setup = function(_, opts)
     -- Diagnostics
     vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, opts)
+    vim.keymap.set("n", "<leader>dh", vim.diagnostic.open_float, opts)
     vim.keymap.set("n", "<leader>dl", telescope.diagnostics, opts)
 
     -- Auto formatting on save
