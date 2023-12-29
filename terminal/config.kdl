@@ -1,0 +1,9 @@
+keybinds {
+    locked {
+        bind "Insert" { GoToTab 2; SwitchToMode "Normal"; }
+    }
+
+    shared_except "locked" {
+        bind "Insert" { GoToTab 1; SwitchToMode "Locked"; }
+    }
+}
