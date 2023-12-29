@@ -47,7 +47,14 @@ local setup = function(_, opts)
     }
   })
 
-  lsp_zero.setup_servers({ 'gopls', 'omnisharp', 'bicep' })
+  require('lspconfig').omnisharp.setup({
+    on_attach = lsp_zero.on_attach,
+    handlers = {
+      ["textDocument/definition"] = require('omnisharp_extended').handler,
+    },
+  })
+
+  lsp_zero.setup_servers({ 'gopls', 'bicep' })
 
   ---
   -- CMP setup
@@ -104,6 +111,7 @@ return {
       { 'williamboman/mason.nvim' },
       { 'williamboman/mason-lspconfig.nvim' },
       { "folke/neodev.nvim",                opts = {} },
+      { "Hoffs/omnisharp-extended-lsp.nvim" }
     },
   },
 }
