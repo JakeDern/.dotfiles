@@ -1,4 +1,4 @@
-# Git stuff
+# Git
 alias g='git'
 alias gb='git branch'
 alias gs='git status'
@@ -11,3 +11,9 @@ alias gp='git push'
 alias grh='git reset --hard'
 alias grs='git reset --soft'
 alias gco='git checkout'
+
+# Zellij
+alias zj='zellij'
+alias zja='zellij attach'
+
+export ZELLIJ_AUTO_ATTACH=true
