@@ -1,4 +1,23 @@
 keybinds {
+    normal {
+        bind "Esc" { SwitchToMode "Pane"; }
+        bind "Ctrl h" "Left" { MoveFocus "Left"; }
+        bind "Ctrl l" "Right" { MoveFocus "Right"; }
+        bind "Ctrl j" "Down" { MoveFocus "Down"; }
+        bind "Ctrl k" "Up" { MoveFocus "Up"; }
+    }
+
+    pane {
+        bind "i" { SwitchToMode "Normal"; }
+        bind "n" { NewPane; SwitchToMode "Normal"; }
+        bind "_" { NewPane "Down"; SwitchToMode "Normal"; }
+        bind "|" { NewPane "Right"; SwitchToMode "Normal"; }
+        // bind "h" "Left" { MoveFocus "Left"; SwitchToMode "Normal"; }
+        // bind "l" "Right" { MoveFocus "Right"; SwitchToMode "Normal"; }
+        // bind "j" "Down" { MoveFocus "Down"; SwitchToMode "Normal"; }
+        // bind "k" "Up" { MoveFocus "Up"; SwitchToMode "Normal"; }
+    }
+
     locked {
         bind "Insert" { GoToTab 2; SwitchToMode "Normal"; }
     }
