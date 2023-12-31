@@ -27,6 +27,7 @@ vim.opt.updatetime = 50
 vim.opt.autowrite = true     -- Automatically writes before a lot of jumps to other files
 vim.opt.termguicolors = true -- Supposedly better terminal colors
 
+
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldenable = false

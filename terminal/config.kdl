@@ -1,6 +1,14 @@
+theme "tokyo-night"
+
 keybinds {
     normal {
         bind "Esc" { SwitchToMode "Pane"; }
+        bind "Ctrl p" {
+            LaunchOrFocusPlugin "zellij:session-manager" {
+                floating true
+                move_to_focused_tab true
+            };
+        }
         bind "Ctrl h" "Left" { MoveFocus "Left"; }
         bind "Ctrl l" "Right" { MoveFocus "Right"; }
         bind "Ctrl j" "Down" { MoveFocus "Down"; }
