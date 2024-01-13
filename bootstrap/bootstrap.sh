@@ -28,7 +28,6 @@ mkdir -p ~/bin
 
 # nvm doens't show up without sourcing this script. This is done in
 # bashrc, but it doesn't stick in the subshell for scripts
-#
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 if ! command -v nvm &> /dev/null; then
     echo "nvm not found, installing..."
@@ -67,6 +66,17 @@ mkdir -p ~/.config
 ln -rsf $NVIM_DIR ~/.config
 
 # ========================================
+# Install bin scripts
+# ========================================
+BIN_DIR=$(realpath "$SCRIPT_DIR/../bin")
+BIN_SCRIPTS=$(find $BIN_DIR -maxdepth 1 -type f)
+# Link all scripts in bin dir
+for script in $BIN_SCRIPTS; do
+    name=$(basename "$script" | echo zellij-sessionizer.sh | sed -e "s/\.sh//")
+    ln -rsf $script ~/bin/$name
+done
+
+# ========================================
 # General terminal setup
 # ========================================
 BASH_DIR=$(realpath "$SCRIPT_DIR/../bash")
@@ -74,6 +84,7 @@ BASH_DIR=$(realpath "$SCRIPT_DIR/../bash")
 # Bash aliases, .bash_aliases are sources by default in .bashrc
 # in most linux distributions
 ln -rsf $BASH_DIR/bash_aliases.sh ~/.bash_aliases
+ln -rsf $BASH_DIR/bashprofile.sh ~/.bashprofile
 
 # ========================================
 # Zellij setup 

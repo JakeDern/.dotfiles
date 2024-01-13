@@ -15,4 +15,4 @@ alias gco='git checkout'
 # Zellij
 alias zj='zellij'
 alias zja='zellij attach'
-
+alias zjs='zellij-sessionizer'
