@@ -16,4 +16,3 @@ alias gco='git checkout'
 alias zj='zellij'
 alias zja='zellij attach'
 
-export ZELLIJ_AUTO_ATTACH=true
