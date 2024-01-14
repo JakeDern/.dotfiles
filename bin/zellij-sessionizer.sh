@@ -1,12 +1,16 @@
 #!/bin/bash
 
-root_folders="$HOME/projects $HOME/work $HOME/.config"
+root_folders="$HOME/repos $HOME/work"
 
 function attach_session() {
     local session_root=$1
     local session_name=$(basename "$session_root" | tr . _)
     cd $session_root
-    zellij attach --create $session_name
+    if ! zellij list-sessions --short | grep -wq "$session_name" ; then
+        zellij --session $session_name --layout ~/.config/zellij/layouts/project_layout.kdl
+    else
+        zellij attach $session_name
+    fi
 }
 
 quit_option="=== Quit sessionizer ==="

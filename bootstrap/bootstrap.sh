@@ -22,8 +22,6 @@ git config --global user.email jakedern@yahoo.com
 git config --global core.editor "nvim"
 
 mkdir -p ~/repos
-mkdir -p ~/work
-mkdir -p ~/personal
 mkdir -p ~/bin
 
 # nvm doens't show up without sourcing this script. This is done in
