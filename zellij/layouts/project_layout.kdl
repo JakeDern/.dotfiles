@@ -10,11 +10,15 @@ layout {
         }
     }
     
-    tab name="editor" {
-        pane
+    tab name="nvim" focus=true {
+        pane {
+            focus true
+            command "nvim"
+            args "."
+        }
     }
 
-    tab name="terminal" focus=true  {
+    tab name="terminal" {
         pane
     }
 }
