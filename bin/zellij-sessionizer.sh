@@ -1,13 +1,13 @@
 #!/bin/bash
 
-root_folders="$HOME/repos $HOME/work"
+root_folders="$HOME/repos"
 
 function attach_session() {
     local session_root=$1
     local session_name=$(basename "$session_root" | tr . _)
     cd $session_root
     if ! zellij list-sessions --short | grep -wq "$session_name" ; then
-        zellij --session $session_name --layout ~/.config/zellij/layouts/project_layout.kdl
+        zellij --session $session_name --layout ~/.config/zellij/layouts/project_layout.kdl options --default-mode locked
     else
         zellij attach $session_name
     fi
@@ -16,7 +16,7 @@ function attach_session() {
 quit_option="=== Quit sessionizer ==="
 last_session=""
 while true; do
-    selected_option=$( (echo $quit_option && find $root_folders -mindepth 1 -maxdepth 1 -type d) | fzf --reverse)
+    selected_option=$( (echo $quit_option && echo $HOME && find $root_folders -mindepth 1 -maxdepth 1 -type d) | fzf --reverse)
 
     if [[ $selected_option == $quit_option ]]; then
         exit 0

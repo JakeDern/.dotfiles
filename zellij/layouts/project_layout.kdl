@@ -11,7 +11,7 @@ layout {
     }
     
     tab name="nvim" focus=true {
-        pane {
+        pane start_suspended=false {
             focus true
             command "nvim"
             args "."
