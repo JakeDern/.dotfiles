@@ -16,3 +16,6 @@ alias gco='git checkout'
 alias zj='zellij'
 alias zja='zellij attach'
 alias zjs='zellij-sessionizer'
+
+# Kubectl
+alias k='kubectl'

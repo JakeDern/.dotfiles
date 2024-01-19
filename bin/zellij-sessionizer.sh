@@ -1,6 +1,6 @@
 #!/bin/bash
 
-root_folders="$HOME/repos"
+root_folders="$HOME/repos $HOME/repos/monitoring/projects"
 
 function attach_session() {
     local session_root=$1
