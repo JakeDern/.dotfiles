@@ -1,5 +1,7 @@
 theme "tokyo-night"
 
+default_mode "locked"
+
 keybinds clear-defaults=true {
     // Always go to tmux from any mode with esc. Tmux
     // is basically my nvim normal mode
@@ -10,12 +12,14 @@ keybinds clear-defaults=true {
         bind "Ctrl l" { MoveFocus "Right"; }
         bind "Ctrl j" { MoveFocus "Down"; }
         bind "Ctrl k" { MoveFocus "Up"; }
+        bind "Ctrl d" { Detach; }
     }
     
     // Nvim tab will always run in locked mode. Need one 
     // special key to get out of there.
     locked {
         bind "Insert" { GoToTab 2; SwitchToMode "Normal"; }
+        bind "Ctrl d" { Detach; }
     }
 
     tmux {
