@@ -94,7 +94,8 @@ ln -rsf $BASH_DIR/bashprofile.sh ~/.bashprofile
 
 # ZSH setup
 ZSH_DIR=$(realpath "$SCRIPT_DIR/../zsh")
-ln -rsf $ZSH_DIR/.zshrc ~/.zshrc
+ln -rsf $ZSH_DIR/zshrc.zsh ~/.zshrc
+ln -rsf $ZSH_DIR/zsh_profile.zsh ~/.zsh_profile
 
 # ========================================
 # Zellij setup 

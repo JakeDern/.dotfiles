@@ -1,3 +1,8 @@
+# General
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
 # Git
 alias g='git'
 alias gb='git branch'
@@ -19,3 +24,4 @@ alias zjs='zellij-sessionizer'
 
 # Kubectl
 alias k='kubectl'
+
