@@ -15,6 +15,14 @@ sudo apt-get install -y \
     ripgrep \
     fzf     \
     git \
+    zsh \
+
+# Install oh my zsh
+if [ ! -d $HOME/.oh-my-zsh ]; then 
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    # Sets default shell to zsh (should be done by the oh my zsh installer)
+    # chsh -s $(which zsh)
+fi
 
 # Some basic git stuff
 git config --global user.name "Jake Dern"
@@ -77,12 +85,16 @@ done
 # ========================================
 # General terminal setup
 # ========================================
-BASH_DIR=$(realpath "$SCRIPT_DIR/../bash")
 
 # Bash aliases, .bash_aliases are sources by default in .bashrc
 # in most linux distributions
+BASH_DIR=$(realpath "$SCRIPT_DIR/../bash")
 ln -rsf $BASH_DIR/bash_aliases.sh ~/.bash_aliases
 ln -rsf $BASH_DIR/bashprofile.sh ~/.bashprofile
+
+# ZSH setup
+ZSH_DIR=$(realpath "$SCRIPT_DIR/../zsh")
+ln -rsf $ZSH_DIR/.zshrc ~/.zshrc
 
 # ========================================
 # Zellij setup 
