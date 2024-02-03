@@ -104,5 +104,7 @@ if [ -f ~/.zshprofile ]; then
     source ~/.zshprofile
 fi
 
+export DEFAULT_USER=$USER
+
 # Turn of beeps
 unsetopt BEEP
