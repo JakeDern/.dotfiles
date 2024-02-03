@@ -1,12 +1,12 @@
 #!/bin/bash
 
-root_folders="$HOME/repos"
+root_folders="$HOME/repos $HOME/repos/monitoring/projects"
 
 function attach_session() {
     local session_root=$1
     local session_name=$(basename "$session_root" | tr . _)
     cd $session_root
-    if ! zellij list-sessions --short | grep -wq "$session_name" ; then
+    if ! zellij list-sessions --short | grep -wxq "$session_name" ; then
         zellij --session $session_name --layout ~/.config/zellij/layouts/project_layout.kdl options --default-mode locked
     else
         zellij attach $session_name
