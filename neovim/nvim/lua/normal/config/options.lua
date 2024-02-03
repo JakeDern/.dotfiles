@@ -27,7 +27,21 @@ vim.opt.updatetime = 50
 vim.opt.autowrite = true     -- Automatically writes before a lot of jumps to other files
 vim.opt.termguicolors = true -- Supposedly better terminal colors
 
-
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldenable = false
+
+-- Setting this bridges the system and nvim clipboard completely
+vim.opt.clipboard = 'unnamedplus'
+vim.g.clipboard = {
+  name = 'WslClipboard',
+  copy = {
+    ["+"] = 'clip.exe',
+    ["*"] = 'clip.exe',
+  },
+  paste = {
+    ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  },
+  cache_enabled = 0,
+}
