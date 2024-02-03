@@ -1,8 +1,21 @@
 #!/bin/bash
 
+# If we're running this from zshell then we need a bunch
+# of stuff that's normally added in bashrc and bashprofile
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
+
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
+fi
+
+set -e # Exit after first error
+set -m # Enable "job control", not on by default in zsh
+
 # Version constants, probably take a look around and update these
-NVM_VERSION=0.39.5
-NVIM_VERSION=v0.9.5
+export NVM_VERSION=0.39.5
+export NVIM_VERSION=v0.9.5
 
 # Install some common utils
 sudo apt-get update
@@ -60,8 +73,15 @@ NVIM_DIR=$(realpath "$SCRIPT_DIR/../neovim/nvim")
 
 if ! command -v nvim &> /dev/null; then
     echo "neovim not found"
-    curl -O https://github.com/neovim/neovim/releases/download/${NVIM_VERSION}/nvim.appimage --output-dir ~/bin
-    mv ~/bin/nvim.appimage ~/bin/nvim
+    TEMP=$(mktemp -d)
+
+    pushd $TEMP
+    # Note -L option is required to follow re-directs. Otherwise you get an empty file
+    # -O option saves the file to it's default name "nvim.appimage"
+    curl -LO https://github.com/neovim/neovim/releases/download/${NVIM_VERSION}/nvim.appimage
+    mv nvim.appimage ~/bin/nvim
+    popd
+
     chmod +x ~/bin/nvim
 else
     echo "neovim already installed"
@@ -88,14 +108,13 @@ done
 
 # Bash aliases, .bash_aliases are sources by default in .bashrc
 # in most linux distributions
-BASH_DIR=$(realpath "$SCRIPT_DIR/../bash")
-ln -rsf $BASH_DIR/bash_aliases.sh ~/.bash_aliases
-ln -rsf $BASH_DIR/bashprofile.sh ~/.bashprofile
+SHELL_DIR=$(realpath "$SCRIPT_DIR/../shell")
+ln -rsf $SHELL_DIR/aliases.sh ~/.bash_aliases
+ln -rsf $SHELL_DIR/profile.sh ~/.bashprofile
+ln -rsf $SHELL_DIR/profile.sh ~/.zshprofile
 
 # ZSH setup
-ZSH_DIR=$(realpath "$SCRIPT_DIR/../zsh")
-ln -rsf $ZSH_DIR/zshrc.zsh ~/.zshrc
-ln -rsf $ZSH_DIR/zsh_profile.zsh ~/.zsh_profile
+ln -rsf $SHELL_DIR/zshrc.zsh ~/.zshrc
 
 # ========================================
 # Zellij setup 
