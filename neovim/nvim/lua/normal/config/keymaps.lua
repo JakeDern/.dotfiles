@@ -16,3 +16,6 @@ vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increa
 vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
 vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
 
+-- Remap half page up and down
+vim.keymap.set("n", "<C-j>", "<C-d>", { desc = "Half page down", remap = true })
+vim.keymap.set("n", "<C-k>", "<C-u>", { desc = "Half page up", remap = true })
