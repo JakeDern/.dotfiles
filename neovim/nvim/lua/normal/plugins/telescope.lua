@@ -28,8 +28,26 @@ end
 -- Configure telescope specific keybindings here
 local keymaps = function()
   local builtin = require('telescope.builtin')
-  vim.keymap.set('n', '<leader><leader>', builtin.git_files, {})
-  -- Telescope grep_string search=foo
+  -- vim.keymap.set('n', '<leader><leader>', builtin.git_files, {})
+
+  -- Find files
+  vim.keymap.set('n', '<leader><leader>', function()
+    builtin.find_files {
+      -- Filter out .git folder and gitignore, but allow hidden files
+      find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' },
+    }
+  end, {})
+
+  -- Search dotfiles from anywhere
+  vim.keymap.set('n', '<leader>fd', function()
+    builtin.find_files {
+      -- Filter out .git folder and gitignore, but allow hidden files
+      find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' },
+      cwd = '~/repos/.dotfiles'
+    }
+  end, {})
+
+  -- General
   vim.keymap.set('n', '<leader>ps', builtin.live_grep, {})
   vim.keymap.set('n', '<C-f>', function()
     builtin.current_buffer_fuzzy_find({
