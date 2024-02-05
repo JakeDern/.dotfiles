@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e # Exit after first error
+set -m # Enable "job control", not on by default in zsh
+
 # If we're running this from zshell then we need a bunch
 # of stuff that's normally added in bashrc and bashprofile
 if [ -f ~/.bashrc ]; then
@@ -9,9 +12,6 @@ fi
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
-
-set -e # Exit after first error
-set -m # Enable "job control", not on by default in zsh
 
 # Version constants, probably take a look around and update these
 export NVM_VERSION=0.39.5
@@ -37,6 +37,21 @@ if [ ! -d $HOME/.oh-my-zsh ]; then
     # chsh -s $(which zsh)
 fi
 
+# ========================================
+# General terminal setup
+# ========================================
+
+# Bash aliases, .bash_aliases are sources by default in .bashrc
+# in most linux distributions
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+SHELL_DIR=$(realpath "$SCRIPT_DIR/../shell")
+ln -rsf $SHELL_DIR/aliases.sh ~/.bash_aliases
+ln -rsf $SHELL_DIR/profile.sh ~/.bashprofile
+ln -rsf $SHELL_DIR/profile.sh ~/.zshprofile
+
+# ZSH setup
+ln -rsf $SHELL_DIR/zshrc.zsh ~/.zshrc
+
 # Some basic git stuff
 git config --global user.name "Jake Dern"
 git config --global user.email jakedern@yahoo.com
@@ -44,6 +59,10 @@ git config --global core.editor "nvim"
 
 mkdir -p ~/repos
 mkdir -p ~/bin
+
+# ========================================
+# Miscellaneous dependencies
+# ========================================
 
 # nvm doens't show up without sourcing this script. This is done in
 # bashrc, but it doesn't stick in the subshell for scripts
@@ -68,7 +87,6 @@ fi
 # ========================================
 # Neovim setup
 # ========================================
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 NVIM_DIR=$(realpath "$SCRIPT_DIR/../neovim/nvim")
 
 if ! command -v nvim &> /dev/null; then
@@ -102,19 +120,6 @@ for script in $BIN_SCRIPTS; do
     ln -rsf $script ~/bin/$name
 done
 
-# ========================================
-# General terminal setup
-# ========================================
-
-# Bash aliases, .bash_aliases are sources by default in .bashrc
-# in most linux distributions
-SHELL_DIR=$(realpath "$SCRIPT_DIR/../shell")
-ln -rsf $SHELL_DIR/aliases.sh ~/.bash_aliases
-ln -rsf $SHELL_DIR/profile.sh ~/.bashprofile
-ln -rsf $SHELL_DIR/profile.sh ~/.zshprofile
-
-# ZSH setup
-ln -rsf $SHELL_DIR/zshrc.zsh ~/.zshrc
 
 # ========================================
 # Zellij setup 
