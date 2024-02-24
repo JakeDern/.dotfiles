@@ -13,6 +13,7 @@ keybinds clear-defaults=true {
         bind "Ctrl j" { MoveFocus "Down"; }
         bind "Ctrl k" { MoveFocus "Up"; }
         bind "Ctrl d" { Detach; }
+        bind "Ctrl g" { SwitchToMode "Locked"; }
     }
     
     // Nvim tab will always run in locked mode. Need one 
@@ -25,6 +26,9 @@ keybinds clear-defaults=true {
     tmux {
         bind "p" { SwitchToMode "Pane"; }
         bind "i" { SwitchToMode "Normal"; }
+        // bind "s" { SwitchToMode "Search"; }
+        // bind "e" { EditScrollback; SwitchToMode "Locked"; }
+        // bind "s" { SwitchToMode "EnterSearch"; SearchInput 0; }
         bind "_" { NewPane "Down"; SwitchToMode "Normal"; }
         bind "|" { NewPane "Right"; SwitchToMode "Normal"; }
         // There is a bug in zellij that you can't bind ctrl+j because
