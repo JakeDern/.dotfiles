@@ -100,5 +100,16 @@ fi
 
 export DEFAULT_USER=$USER
 
-# Turn of beeps
+# Sql command line
+export PATH="$PATH:/opt/mssql-tools/bin"
+
+# Personal bin
+export PATH="$PATH:~/bin"
+
+# Go additions
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$HOME/bin"
+
+# Turn off beeps
 unsetopt BEEP
