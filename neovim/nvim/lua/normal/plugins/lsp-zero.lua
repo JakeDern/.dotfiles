@@ -63,41 +63,34 @@ local setup = function(_, opts)
   -- CMP setup
   ---
   local cmp = require('cmp')
-  local cmp_action = require('lsp-zero').cmp_action()
-  local copilot = require('copilot.suggestion')
+  -- local cmp_action = require('lsp-zero').cmp_action()
+  -- local copilot = require('copilot.suggestion')
+  local lspkind = require('lspkind')
   cmp.setup({
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },
     mapping = cmp.mapping.preset.insert({
       ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
       ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-      -- ['<C-y>'] = cmp.mapping.confirm({ select = true }),
       ['<C-e>'] = cmp.mapping.abort(),
-      -- Based off of https://github.com/fredrikaverpil/dotfiles/blob/main/nvim-lazyvim/lua/plugins/cmp.lua
-      ['<C-y>'] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          print("Accepting cmp")
-          -- cmp.select_next_item()
-          -- cmp.
-          -- cmp.confirm()
-          cmp.mapping.confirm({ select = false })()
-        elseif copilot.is_visible() then
-          print("Accepting copilot")
-          copilot.accept()
-        else
-          print("Fallback")
-          fallback()
-        end
-      end, { "i", "s" }),
-      -- Based off of https://github.com/fredrikaverpil/dotfiles/blob/main/nvim-lazyvim/lua/plugins/cmp.lua
-      -- ['<S-Tab>'] = cmp.mapping(function(fallback)
-      --   if cmp.visible() then
-      --     cmp.select_prev_item()
-      --   else
-      --     fallback()
-      --   end
-      -- end, { "i", "s" }),
-      -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<CR>'] = function(fallback)
+        fallback()
+      end,
+      ['<C-y>'] = cmp.mapping.confirm({ select = false })
     }),
+    formatting = {
+      format = lspkind.cmp_format({
+        mode = "symbol",
+      })
+    },
+    sources = {
+      { name = "copilot",  group_index = 2 },
+      { name = "nvim_lsp", group_index = 2 },
+      { name = "path",     group_index = 2 },
+      { name = "luasnip",  group_index = 2 },
+    }
   })
 end
 
@@ -107,6 +100,8 @@ return {
     branch = 'v3.x',
     config = setup,
     dependencies = {
+      -- Adds symbols to completion items
+      { "onsails/lspkind.nvim" },
       {
         'neovim/nvim-lspconfig',
         dependencies = {

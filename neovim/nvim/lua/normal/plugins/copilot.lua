@@ -3,6 +3,12 @@
 return {
   -- custom config which piggybacks on the copilot extras in lazy.lua.
   {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end
+  },
+  {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     build = ":Copilot auth",
@@ -10,12 +16,13 @@ return {
     config = function()
       require("copilot").setup({
         panel = {
-          enabled = true,
+          enabled = false,
           auto_refresh = true,
         },
         suggestion = {
-          enabled = true,
+          enabled = false,
           auto_trigger = true,
+          auto_refresh = true,
           accept = false, -- disable built-in keymapping
         },
         filetypes = {
