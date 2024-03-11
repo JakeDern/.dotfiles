@@ -64,31 +64,39 @@ local setup = function(_, opts)
   ---
   local cmp = require('cmp')
   local cmp_action = require('lsp-zero').cmp_action()
-
+  local copilot = require('copilot.suggestion')
   cmp.setup({
     mapping = cmp.mapping.preset.insert({
       ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
       ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+      -- ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+      ['<C-e>'] = cmp.mapping.abort(),
       -- Based off of https://github.com/fredrikaverpil/dotfiles/blob/main/nvim-lazyvim/lua/plugins/cmp.lua
-      ['<Tab>'] = cmp.mapping(function(fallback)
+      ['<C-y>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          cmp.select_next_item()
-        elseif require("copilot.suggestion").is_visible() then
-          require("copilot.suggestion").accept()
+          print("Accepting cmp")
+          -- cmp.select_next_item()
+          -- cmp.
+          -- cmp.confirm()
+          cmp.mapping.confirm({ select = false })()
+        elseif copilot.is_visible() then
+          print("Accepting copilot")
+          copilot.accept()
         else
+          print("Fallback")
           fallback()
         end
       end, { "i", "s" }),
       -- Based off of https://github.com/fredrikaverpil/dotfiles/blob/main/nvim-lazyvim/lua/plugins/cmp.lua
-      ['<S-Tab>'] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        else
-          fallback()
-        end
-      end, { "i", "s" }),
+      -- ['<S-Tab>'] = cmp.mapping(function(fallback)
+      --   if cmp.visible() then
+      --     cmp.select_prev_item()
+      --   else
+      --     fallback()
+      --   end
+      -- end, { "i", "s" }),
       -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
   })
 end

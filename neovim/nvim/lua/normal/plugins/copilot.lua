@@ -18,6 +18,12 @@ return {
           auto_trigger = true,
           accept = false, -- disable built-in keymapping
         },
+        filetypes = {
+          help = false,
+          gitcommit = false,
+          gitrebase = false,
+          bicep = false
+        }
       })
 
       -- hide copilot suggestions when cmp menu is open
