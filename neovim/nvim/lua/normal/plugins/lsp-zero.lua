@@ -65,6 +65,7 @@ local setup = function(_, opts)
   local cmp = require('cmp')
   -- local cmp_action = require('lsp-zero').cmp_action()
   -- local copilot = require('copilot.suggestion')
+  vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
   local lspkind = require('lspkind')
   cmp.setup({
     window = {
@@ -78,11 +79,12 @@ local setup = function(_, opts)
       ['<CR>'] = function(fallback)
         fallback()
       end,
-      ['<C-y>'] = cmp.mapping.confirm({ select = false })
+      ['<C-y>'] = cmp.mapping.confirm({ select = true })
     }),
     formatting = {
       format = lspkind.cmp_format({
-        mode = "symbol",
+        preset = 'default',
+        mode = "symbol_text",
       })
     },
     sources = {
@@ -102,6 +104,7 @@ return {
     dependencies = {
       -- Adds symbols to completion items
       { "onsails/lspkind.nvim" },
+      { "zbirenbaum/copilot-cmp" },
       {
         'neovim/nvim-lspconfig',
         dependencies = {
