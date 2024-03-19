@@ -63,33 +63,36 @@ local setup = function(_, opts)
   -- CMP setup
   ---
   local cmp = require('cmp')
-  local cmp_action = require('lsp-zero').cmp_action()
-
+  -- local cmp_action = require('lsp-zero').cmp_action()
+  -- local copilot = require('copilot.suggestion')
+  vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+  local lspkind = require('lspkind')
   cmp.setup({
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },
     mapping = cmp.mapping.preset.insert({
       ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
       ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-      -- Based off of https://github.com/fredrikaverpil/dotfiles/blob/main/nvim-lazyvim/lua/plugins/cmp.lua
-      ['<Tab>'] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        elseif require("copilot.suggestion").is_visible() then
-          require("copilot.suggestion").accept()
-        else
-          fallback()
-        end
-      end, { "i", "s" }),
-      -- Based off of https://github.com/fredrikaverpil/dotfiles/blob/main/nvim-lazyvim/lua/plugins/cmp.lua
-      ['<S-Tab>'] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        else
-          fallback()
-        end
-      end, { "i", "s" }),
-      -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = function(fallback)
+        fallback()
+      end,
+      ['<C-y>'] = cmp.mapping.confirm({ select = true })
     }),
+    formatting = {
+      format = lspkind.cmp_format({
+        preset = 'default',
+        mode = "symbol_text",
+      })
+    },
+    sources = {
+      { name = "copilot",  group_index = 2 },
+      { name = "nvim_lsp", group_index = 2 },
+      { name = "path",     group_index = 2 },
+      { name = "luasnip",  group_index = 2 },
+    }
   })
 end
 
@@ -99,6 +102,9 @@ return {
     branch = 'v3.x',
     config = setup,
     dependencies = {
+      -- Adds symbols to completion items
+      { "onsails/lspkind.nvim" },
+      { "zbirenbaum/copilot-cmp" },
       {
         'neovim/nvim-lspconfig',
         dependencies = {

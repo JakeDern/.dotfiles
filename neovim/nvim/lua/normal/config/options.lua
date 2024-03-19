@@ -31,6 +31,8 @@ vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldenable = false
 
+vim.opt.completeopt = 'menu,menuone,noselect,noinsert'
+
 -- Setting this bridges the system and nvim clipboard completely
 vim.opt.clipboard = 'unnamedplus'
 vim.g.clipboard = {
