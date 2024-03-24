@@ -17,12 +17,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("common")
+require("config")
 
--- Check for vscode mode and only setup packer
--- if we're in normal nvim
-if vim.g.vscode then
-  require("vscode_lua")
-else
-  require("normal")
-end
+-- Load plugins
+require("lazy").setup("plugins", {})
