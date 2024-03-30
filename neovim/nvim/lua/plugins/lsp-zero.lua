@@ -12,6 +12,8 @@ local setup = function(_, opts)
   -- anyways.
   require("mason").setup()
 
+  -- local lsp_zero = require('lsp_zero')
+
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
   local lsp_setup = function(server)
     require('lspconfig')[server].setup({
@@ -133,10 +135,11 @@ end
 
 return {
   {
-    'neovim/nvim-lspconfig',
+    'VonHeikemen/lsp-zero.nvim',
     branch = 'v3.x',
     config = setup,
     dependencies = {
+      { 'neovim/nvim-lspconfig' },
       -- Adds symbols to completion items
       { 'onsails/lspkind.nvim' },
       { 'zbirenbaum/copilot-cmp' },
