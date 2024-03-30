@@ -1,6 +1,43 @@
-local key_set = function(mode, key, func)
-  vim.keymap.set(mode, key, func, { buffer = 0 })
+local key_set = function(mode, key, func, bufnr)
+  vim.keymap.set(mode, key, func, { buffer = bufnr })
 end
+
+local override_attach = {
+  ['omnisharp'] = function(_, bufnr)
+    local omnisharp_extended = require('omnisharp_extended')
+    key_set("n", "gd", omnisharp_extended.lsp_definitions, bufnr)
+    key_set("n", "gr", omnisharp_extended.telescope_lsp_references, bufnr)
+    key_set("n", "gi", omnisharp_extended.telescope_lsp_implementation, bufnr)
+  end
+}
+
+local general_attach = function(_, bufnr)
+  local telescope = require('telescope.builtin')
+  key_set("n", "gt", vim.lsp.buf.type_definition, bufnr)
+  key_set("n", "K", vim.lsp.buf.hover, bufnr)
+  key_set("n", "<leader>r", vim.lsp.buf.rename, bufnr)
+  key_set("n", "<leader>.", vim.lsp.buf.code_action, bufnr)
+
+  -- Diagnostics
+  key_set("n", "<leader>dj", vim.diagnostic.goto_next, bufnr)
+  key_set("n", "<leader>dk", vim.diagnostic.goto_prev, bufnr)
+  key_set("n", "<leader>dh", vim.diagnostic.open_float, bufnr)
+  key_set("n", "<leader>dl", telescope.diagnostics, bufnr)
+
+  -- References, definitions
+  key_set("n", "gr", telescope.lsp_references, bufnr)
+  key_set("n", "gd", vim.lsp.buf.definition, bufnr)
+  key_set("n", "gi", telescope.lsp_implementations, bufnr)
+end
+
+local attach = function(client, bufnr)
+  general_attach(client, bufnr)
+  local overrides = override_attach[client.name]
+  if overrides then
+    overrides(client, bufnr)
+  end
+end
+
 
 local setup = function(_, opts)
   -- Neodev setup must be done before lspconfig, so putting it first so that
@@ -12,7 +49,23 @@ local setup = function(_, opts)
   -- anyways.
   require("mason").setup()
 
-  -- local lsp_zero = require('lsp_zero')
+  local lsp_zero = require('lsp-zero')
+  lsp_zero.on_attach(function(client, bufnr)
+    attach(client,bufnr)
+  end)
+
+  -- technically these are "diagnostic signs"
+  -- neovim enables them by default.
+  -- here we are just changing them to fancy icons.
+  lsp_zero.set_sign_icons({
+    error = '✘',
+    warn = '▲',
+    hint = '⚑',
+    info = '»'
+  })
+
+
+
 
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
   local lsp_setup = function(server)
@@ -50,37 +103,37 @@ local setup = function(_, opts)
   })
 
   -- :h LspAttach
-  local telescope = require('telescope.builtin')
-  local lsp_group = vim.api.nvim_create_augroup("JDLSP", { clear = true })
-  vim.api.nvim_create_autocmd('LspAttach', {
-    desc = 'Lsp Keymaps',
-    group = lsp_group,
-    callback = function(args)
-      local client = vim.lsp.get_client_by_id(args.data.client_id)
-      if client == nil then return end
-      if client.name == 'omnisharp' then
-        omnisharp_extended = require('omnisharp_extended')
-        key_set("n", "gd", omnisharp_extended.lsp_definitions)
-        key_set("n", "gr", omnisharp_extended.telescope_lsp_references)
-        key_set("n", "gi", omnisharp_extended.telescope_lsp_implementation)
-      else
-        key_set("n", "gd", vim.lsp.buf.definition)
-        key_set("n", "gr", telescope.lsp_references)
-        key_set("n", "gi", telescope.lsp_implementations)
-      end
-      -- General Lsp stuff
-      key_set("n", "gt", vim.lsp.buf.type_definition)
-      key_set("n", "K", vim.lsp.buf.hover)
-      key_set("n", "<leader>r", vim.lsp.buf.rename)
-      key_set("n", "<leader>.", vim.lsp.buf.code_action)
-
-      -- Diagnostics
-      key_set("n", "<leader>dj", vim.diagnostic.goto_next)
-      key_set("n", "<leader>dk", vim.diagnostic.goto_prev)
-      key_set("n", "<leader>dh", vim.diagnostic.open_float)
-      key_set("n", "<leader>dl", telescope.diagnostics)
-    end
-  })
+  -- local telescope = require('telescope.builtin')
+  -- local lsp_group = vim.api.nvim_create_augroup("JDLSP", { clear = true })
+  -- vim.api.nvim_create_autocmd('LspAttach', {
+  --   desc = 'Lsp Keymaps',
+  --   group = lsp_group,
+  --   callback = function(args)
+  --     local client = vim.lsp.get_client_by_id(args.data.client_id)
+  --     if client == nil then return end
+  --     if client.name == 'omnisharp' then
+  --       omnisharp_extended = require('omnisharp_extended')
+  --       key_set("n", "gd", omnisharp_extended.lsp_definitions)
+  --       key_set("n", "gr", omnisharp_extended.telescope_lsp_references)
+  --       key_set("n", "gi", omnisharp_extended.telescope_lsp_implementation)
+  --     else
+  --       key_set("n", "gd", vim.lsp.buf.definition)
+  --       key_set("n", "gr", telescope.lsp_references)
+  --       key_set("n", "gi", telescope.lsp_implementations)
+  --     end
+  --     -- General Lsp stuff
+  --     key_set("n", "gt", vim.lsp.buf.type_definition)
+  --     key_set("n", "K", vim.lsp.buf.hover)
+  --     key_set("n", "<leader>r", vim.lsp.buf.rename)
+  --     key_set("n", "<leader>.", vim.lsp.buf.code_action)
+  --
+  --     -- Diagnostics
+  --     key_set("n", "<leader>dj", vim.diagnostic.goto_next)
+  --     key_set("n", "<leader>dk", vim.diagnostic.goto_prev)
+  --     key_set("n", "<leader>dh", vim.diagnostic.open_float)
+  --     key_set("n", "<leader>dl", telescope.diagnostics)
+  --   end
+  -- })
   ---
   -- LSP setup
   --
