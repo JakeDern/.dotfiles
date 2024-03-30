@@ -21,7 +21,7 @@ vim.opt.undofile = true
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-vim.opt.showmatch = true
+vim.opt.showmatch = false -- This was annoying
 
 vim.opt.scrolloff = 10 -- ALways have 10 lines below the cursor
 vim.opt.signcolumn = "yes"
