@@ -1,3 +1,19 @@
+vim.g.mapleader = " "
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set("n", "Y", "yg$")
+
+vim.keymap.set("n", "<leader>y", "\",+y")
+vim.keymap.set("v", "<leader>y", "\",+y")
+vim.keymap.set("n", "<leader>Y", "\",+Y")
+
+vim.keymap.set("n", "<leader>d", "\",_d")
+vim.keymap.set("v", "<leader>d", "\",_d")
+
+vim.keymap.set("n", "Q", "<nop>")
+
 vim.keymap.set("n", "<leader>w", vim.cmd.Ex)
 
 -- Move to window using the <ctrl> hjkl keys
@@ -15,7 +31,3 @@ vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increa
 -- Remap split window right and down
 vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
 vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
-
--- Remap half page up and down
--- vim.keymap.set("n", "<C-j>", "<C-d>", { desc = "Half page down", remap = true })
--- vim.keymap.set("n", "<C-k>", "<C-u>", { desc = "Half page up", remap = true })
