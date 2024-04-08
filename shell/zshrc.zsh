@@ -111,5 +111,8 @@ export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/bin"
 
+# Dotnet stuff
+export PATH="$PATH:$HOME/.dotnet/tools"
+
 # Turn off beeps
 unsetopt BEEP
