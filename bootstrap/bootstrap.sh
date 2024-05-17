@@ -20,10 +20,12 @@ export NVIM_VERSION=v0.9.5
 # Install some common utils
 sudo apt-get update
 
-# Note: Any chars after \ including whitespace will break the multiline string
+# Note: Any chars after \ including whitespace will break the multiline string.
+# libfuse2 is a library required to run app images on > 22.04
 sudo apt-get install -y \
     build-essential \
     curl \
+    libfuse2 \
     fd-find \
     ripgrep \
     fzf     \
@@ -78,7 +80,7 @@ fi
 # Best way to install zellij is through cargo
 if ! command -v cargo &> /dev/null; then
     echo "cargo not found, installing..."
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
     rustup update
 else
     echo "cargo already installed"
