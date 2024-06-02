@@ -70,6 +70,32 @@ local setup = function(_, opts)
     -- https://lsp-zero.netlify.app/v3.x/reference/lua-api.html#async-autoformat-client-bufnr-opts
     -- https://lsp-zero.netlify.app/v3.x/reference/lua-api.html#format-on-save-opts
     lsp_zero.buffer_autoformat()
+
+    -- Organize imports on save if the client supports it
+    if client.supports_method("source.organize_imports_on_format") then
+      local augroup = vim.api.nvim_create_augroup("JD_LSP", { clear = true })
+      print("Adding organize imports autocmd")
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        group = augroup,
+        desc = ("Organize imports for '%s'"):format(client.name),
+        buffer = bufnr,
+        -- Implementation copied from Go docs:
+        -- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#imports-and-formatting
+        callback = function(_)
+          local params = vim.lsp.util.make_range_params()
+          params.context = { only = { "source.organizeImports" } }
+          local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+          for cid, res in pairs(result or {}) do
+            for _, r in pairs(res.result or {}) do
+              if r.edit then
+                local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
+                vim.lsp.util.apply_workspace_edit(r.edit, enc)
+              end
+            end
+          end
+        end,
+      })
+    end
   end)
 
   -- Technically these are "diagnostic signs", neovim enables them by default.
