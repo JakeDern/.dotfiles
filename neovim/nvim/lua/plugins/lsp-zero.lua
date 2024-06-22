@@ -78,7 +78,8 @@ local setup = function(_, opts)
       vim.api.nvim_create_autocmd('BufWritePre', {
         group = augroup,
         desc = ("Organize imports for '%s'"):format(client.name),
-        buffer = bufnr,
+        pattern = { "*.go", "*.mod", "*.sum" },
+        -- buffer = bufnr,
         -- Implementation copied from Go docs:
         -- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#imports-and-formatting
         callback = function(_)
