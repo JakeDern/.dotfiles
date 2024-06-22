@@ -174,7 +174,7 @@ local setup = function(_, opts)
         -- print(cmp.get_active_entry().source.name)
         local selected = cmp.get_selected_entry()
         if not selected then
-          entries = cmp.get_entries()
+          local entries = cmp.get_entries()
           -- I don't know why this would be possible, but being defensive here
           if not entries then
             fallback()
