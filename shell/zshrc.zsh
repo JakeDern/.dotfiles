@@ -115,4 +115,4 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/.dotnet/tools"
 
 # Turn off beeps
-unsetopt BEEP
+nsetopt BEEP
