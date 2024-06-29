@@ -20,12 +20,12 @@ return {
       highlight = { enable = true },
       indent = { enable = true },
       incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "gnn", -- set to `false` to disable one of the mappings
-            node_incremental = "grn",
-            scope_incremental = "grc",
-            node_decremental = "grm",
+        enable = true,
+        keymaps = {
+          init_selection = "gnn", -- set to `false` to disable one of the mappings
+          node_incremental = "grn",
+          scope_incremental = "grc",
+          node_decremental = "grm",
         },
       },
 
@@ -34,8 +34,8 @@ return {
         -- "c",
         -- "diff",
         -- "html",
-        -- "javascript",
-        -- "jsdoc",
+        "javascript",
+        "jsdoc",
         "json",
         "jsonc",
         "lua",
@@ -46,11 +46,11 @@ return {
         "python",
         "query",
         "regex",
-        "toml",
+        -- "toml",
         -- "tsx",
         "typescript",
-        -- "vim",
-        -- "vimdoc",
+        "vim",
+        "vimdoc",
         "yaml",
         "go",
         "c_sharp",

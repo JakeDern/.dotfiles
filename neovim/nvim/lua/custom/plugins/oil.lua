@@ -18,7 +18,8 @@ return {
       vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
       -- Open parent directory in floating window
-      vim.keymap.set("n", "<space>-", require("oil").toggle_float)
+      -- Can't set this because i use '-' for creating a vert split
+      -- vim.keymap.set("n", "<space>-", require("oil").toggle_float)
     end,
   },
 }

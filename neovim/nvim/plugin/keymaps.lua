@@ -1,20 +1,24 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line down one" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line up one" })
 
 vim.keymap.set("n", "Y", "yg$")
 
-vim.keymap.set("n", "<leader>y", "\",+y")
 vim.keymap.set("v", "<leader>y", "\",+y")
+vim.keymap.set("n", "<leader>y", "\",+y")
 vim.keymap.set("n", "<leader>Y", "\",+Y")
 
-vim.keymap.set("n", "<leader>d", "\",_d")
-vim.keymap.set("v", "<leader>d", "\",_d")
+-- IF YOU HAVEN'T NOTICED THESE GONE, DELETE THEM
+-- vim.keymap.set("n", "<leader>d", "\",_d")
+-- vim.keymap.set("v", "<leader>d", "\",_d")
 
 vim.keymap.set("n", "Q", "<nop>")
 
 vim.keymap.set("n", "<leader>w", vim.cmd.Ex)
+
+vim.keymap.set("n", "<leader>x", "<cmd>.lua<CR>", { desc = "Execute the current line" })
+vim.keymap.set("n", "<leader>X", "<cmd>source %<CR>", { desc = "Execute the current file" })
 
 -- Move to window using the <ctrl> hjkl keys
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })

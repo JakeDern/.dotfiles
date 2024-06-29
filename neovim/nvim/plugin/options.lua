@@ -23,10 +23,10 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.showmatch = false -- This was annoying
 
-vim.opt.scrolloff = 10 -- ALways have 10 lines below the cursor
+vim.opt.scrolloff = 10    -- ALways have 10 lines below the cursor
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
-vim.opt.updatetime = 1000    -- Update window faster
+vim.opt.updatetime = 100     -- Update window faster
 vim.opt.autowrite = true     -- Automatically writes before a lot of jumps to other files
 vim.opt.termguicolors = true -- Supposedly better terminal colors
 
