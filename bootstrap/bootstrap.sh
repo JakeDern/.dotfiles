@@ -68,11 +68,15 @@ mkdir -p ~/bin
 
 # nvm doens't show up without sourcing this script. This is done in
 # bashrc, but it doesn't stick in the subshell for scripts
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 if ! command -v nvm &> /dev/null; then
     echo "nvm not found, installing..."
-    # Install nvm. We need latest node for various neovim plugins
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh 2>&1 | bash
+    # Load nvm again after install
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 else
     echo "nvm already installed"
 fi
