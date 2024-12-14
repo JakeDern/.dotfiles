@@ -15,7 +15,7 @@ fi
 
 # Version constants, probably take a look around and update these
 export NVM_VERSION=0.39.5
-export NVIM_VERSION=v0.10.0
+export NVIM_VERSION=v0.10.2
 
 # Install some common utils
 sudo apt-get update
