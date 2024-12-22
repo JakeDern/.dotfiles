@@ -117,3 +117,5 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 # Turn off beeps
 nsetopt BEEP
 export PATH=$HOME/.local/bin:$PATH
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
