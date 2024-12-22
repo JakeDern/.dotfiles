@@ -9,15 +9,11 @@ vim.keymap.set("v", "<leader>y", "\",+y")
 vim.keymap.set("n", "<leader>y", "\",+y")
 vim.keymap.set("n", "<leader>Y", "\",+Y")
 
--- IF YOU HAVEN'T NOTICED THESE GONE, DELETE THEM
--- vim.keymap.set("n", "<leader>d", "\",_d")
--- vim.keymap.set("v", "<leader>d", "\",_d")
-
 vim.keymap.set("n", "Q", "<nop>")
 
 vim.keymap.set("n", "<leader>w", vim.cmd.Ex)
-
-vim.keymap.set("n", "<leader>x", "<cmd>.lua<CR>", { desc = "Execute the current line" })
+vim.keymap.set("n", "<leader>x", ":.lua<CR>", { desc = "Execute the current line" })
+vim.keymap.set("v", "<leader>x", ":lua<CR>", { desc = "Execute the current line" })
 vim.keymap.set("n", "<leader>X", "<cmd>source %<CR>", { desc = "Execute the current file" })
 
 -- Move to window using the <ctrl> hjkl keys
