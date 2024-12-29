@@ -15,7 +15,7 @@ fi
 
 # Version constants, probably take a look around and update these
 export NVM_VERSION=0.39.5
-export NVIM_VERSION=v0.10.2
+export NVIM_VERSION=v0.10.3
 
 # Install some common utils
 sudo apt-get update
@@ -44,7 +44,6 @@ fi
 
 # Bash aliases, .bash_aliases are sources by default in .bashrc
 # in most linux distributions
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 ROOT=$(git rev-parse --show-toplevel)
 
 # Symlink everything from overlay/ into home directory. --dotfiles
@@ -78,7 +77,7 @@ else
 fi
 
 # Zellij
-ZELLIJ_DIR=$(realpath "$SCRIPT_DIR/../zellij")
+ZELLIJ_DIR=$(realpath "$ROOT/zellij")
 if ! command -v zellij &> /dev/null; then
     echo "zellij not found"
     cargo install --locked zellij
