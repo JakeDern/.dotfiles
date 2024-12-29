@@ -57,6 +57,36 @@ mkdir -p ~/repos
 mkdir -p ~/bin
 
 # ========================================
+# Rust toolchain and programs
+# ========================================
+
+# Best way to install zellij is through cargo
+if ! command -v cargo &> /dev/null; then
+    echo "cargo not found, installing..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
+    rustup update
+else
+    echo "cargo already installed"
+fi
+
+# Zellij
+ZELLIJ_DIR=$(realpath "$SCRIPT_DIR/../zellij")
+if ! command -v zellij &> /dev/null; then
+    echo "zellij not found"
+    cargo install --locked zellij
+else
+    echo "zellij already installed"
+fi
+
+# Ripgrep
+if ! command -v ripgrep &> /dev/null; then
+    echo "Ripgrep not found"
+    cargo install ripgrep
+else
+    echo "Ripgrep already installed"
+fi
+
+# ========================================
 # Miscellaneous dependencies
 # ========================================
 
@@ -73,15 +103,6 @@ if ! command -v nvm &> /dev/null; then
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 else
     echo "nvm already installed"
-fi
-
-# Best way to install zellij is through cargo
-if ! command -v cargo &> /dev/null; then
-    echo "cargo not found, installing..."
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash
-    rustup update
-else
-    echo "cargo already installed"
 fi
 
 # ========================================
@@ -119,19 +140,4 @@ for script in $BIN_SCRIPTS; do
     name=$(basename "$script" | echo zellij-sessionizer.sh | sed -e "s/\.sh//")
     ln -rsf $script ~/bin/$name
 done
-
-
-# ========================================
-# Zellij setup 
-# ========================================
-ZELLIJ_DIR=$(realpath "$SCRIPT_DIR/../zellij")
-if ! command -v zellij &> /dev/null; then
-    echo "zellij not found"
-    cargo install --locked zellij
-else
-    echo "zellij already installed"
-fi
-
-# Install zellij config file
-ln -rsf $ZELLIJ_DIR ~/.config
 
