@@ -24,6 +24,7 @@ sudo apt-get update
 # libfuse2 is a library required to run app images on > 22.04
 sudo apt-get install -y \
     build-essential \
+    stow \
     curl \
     libfuse2 \
     fd-find \
@@ -31,6 +32,7 @@ sudo apt-get install -y \
     fzf     \
     git \
     zsh \
+
 
 # Install oh my zsh
 if [ ! -d $HOME/.oh-my-zsh ]; then 
@@ -46,13 +48,10 @@ fi
 # Bash aliases, .bash_aliases are sources by default in .bashrc
 # in most linux distributions
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-SHELL_DIR=$(realpath "$SCRIPT_DIR/../shell")
-ln -rsf $SHELL_DIR/aliases.sh ~/.bash_aliases
-ln -rsf $SHELL_DIR/profile.sh ~/.bashprofile
-ln -rsf $SHELL_DIR/profile.sh ~/.zshprofile
 
-# ZSH setup
-ln -rsf $SHELL_DIR/zshrc.zsh ~/.zshrc
+# Symlink everything from overlay/ into home directory. --dotfiles
+# will replace any file starting with "dot-*" with ".*"
+stow --dotfiles $SCRIPT_DIR/overlay -t $HOME
 
 # Some basic git stuff
 git config --global user.name "Jake Dern"
