@@ -28,11 +28,8 @@ sudo apt-get install -y \
     curl \
     libfuse2 \
     fd-find \
-    ripgrep \
-    fzf     \
     git \
     zsh \
-
 
 # Install oh my zsh
 if [ ! -d $HOME/.oh-my-zsh ]; then 
@@ -52,8 +49,20 @@ ROOT=$(git rev-parse --show-toplevel)
 
 # Symlink everything from overlay/ into home directory. --dotfiles
 # will replace any file starting with "dot-*" with ".*"
-mkdir -p $HOME/repos $HOME/bin
+mkdir -p $HOME/repos $HOME/bin $HOME/.config $HOME/.local/share
 stow --dotfiles $ROOT/overlay -t $HOME
+ln -rsf $ROOT/neovim/nvim ~/.config
+
+# ========================================
+# FZF
+# ========================================
+
+FZF_DIR=$HOME/.local/share/fzf
+git clone https://github.com/junegunn/fzf.git $FZF_DIR
+
+# Installation script takes care of everything including updating
+# bash/zsh profile, enabling keybinds, and setting up completions
+$FZF_DIR/install
 
 # ========================================
 # Rust toolchain and programs
@@ -77,7 +86,7 @@ else
     echo "zellij already installed"
 fi
 
-# Ripgrep
+# ripgrep
 if ! command -v ripgrep &> /dev/null; then
     echo "Ripgrep not found"
     cargo install ripgrep
@@ -124,19 +133,4 @@ if ! command -v nvim &> /dev/null; then
 else
     echo "neovim already installed"
 fi
-
-# Link neovim config to nvim dir
-mkdir -p ~/.config
-ln -rsf $NVIM_DIR ~/.config
-
-# ========================================
-# Install bin scripts
-# ========================================
-BIN_DIR=$(realpath "$SCRIPT_DIR/../bin")
-BIN_SCRIPTS=$(find $BIN_DIR -maxdepth 1 -type f)
-# Link all scripts in bin dir
-for script in $BIN_SCRIPTS; do
-    name=$(basename "$script" | echo zellij-sessionizer.sh | sed -e "s/\.sh//")
-    ln -rsf $script ~/bin/$name
-done
 
