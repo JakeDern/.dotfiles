@@ -14,14 +14,13 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # Version constants, probably take a look around and update these
-export NVM_VERSION=0.39.5
+export NVM_VERSION=0.40.1
 export NVIM_VERSION=v0.10.3
 
-# Install some common utils
-sudo apt-get update
-
+# Install common utils
 # Note: Any chars after \ including whitespace will break the multiline string.
 # libfuse2 is a library required to run app images on > 22.04
+sudo apt-get update
 sudo apt-get install -y \
     build-essential \
     stow \
@@ -49,7 +48,12 @@ ROOT=$(git rev-parse --show-toplevel)
 # Symlink everything from overlay/ into home directory. --dotfiles
 # will replace any file starting with "dot-*" with ".*"
 mkdir -p $HOME/repos $HOME/bin $HOME/.config $HOME/.local/share
-stow --dotfiles $ROOT/overlay -t $HOME
+pushd $ROOT
+stow --dotfiles overlay -t $HOME
+popd
+
+# Not sure how to use stow to do an entire directory, so linking
+# the nvim stuff by hand for now
 ln -rsf $ROOT/neovim/nvim ~/.config
 
 # ========================================
@@ -85,7 +89,8 @@ else
     echo "zellij already installed"
 fi
 
-# ripgrep
+# ripgrep versions are typically pretty old when installed
+# via package managers. May as well do it from source.
 if ! command -v ripgrep &> /dev/null; then
     echo "Ripgrep not found"
     cargo install ripgrep
