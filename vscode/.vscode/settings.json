@@ -1,70 +1,66 @@
 {
-    "json.maxItemsComputed": 10000,
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "json.maxItemsComputed": 10000,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  // Terminal
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
     },
-    "[javascriptreact]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [],
+      "icon": "terminal-cmd"
     },
-    "[javascript]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
+    "Git Bash": {
+      "source": "Git Bash"
     },
-    "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
+    "bash (migrated)": {
+      "path": "bash",
+      "args": []
     },
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "[typescript]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-
-    // Terminal
-    "terminal.integrated.profiles.windows": {
-        "PowerShell": {
-            "source": "PowerShell",
-            "icon": "terminal-powershell"
-        },
-        "Command Prompt": {
-            "path": [
-                "${env:windir}\\Sysnative\\cmd.exe",
-                "${env:windir}\\System32\\cmd.exe"
-            ],
-            "args": [],
-            "icon": "terminal-cmd"
-        },
-        "Git Bash": {
-            "source": "Git Bash"
-        },
-        "bash (migrated)": {
-            "path": "bash",
-            "args": []
-        },
-        "Ubuntu-20.04 (WSL)": {
-            "path": "C:\\WINDOWS\\System32\\wsl.exe",
-            "args": [
-                "-d",
-                "Ubuntu-20.04"
-            ]
-        }
-    },
-    "terminal.integrated.defaultProfile.windows": "Ubuntu-20.04 (WSL)",
-    
-    // Neovim settings
-    "vscode-neovim.neovimExecutablePaths.linux": "/home/jakedern/bin/nvim.appimage",
-    "vscode-neovim.neovimExecutablePaths.win32": "/home/jakedern/bin/nvim.appimage",
-    "vscode-neovim.useWSL": true,
-    "vscode-neovim.logLevel": "debug",
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
-    },
-
-    // Workbench
-    "workbench.colorTheme": "Tokyo Night",
-    "workbench.editor.tabSizing": "shrink",
-    "workbench.editor.highlightModifiedTabs": true,
-
-    // Editor
-    "editor.lineNumbers": "relative",
-    "editor.minimap.enabled": false,
-    "editor.fontSize": 18,
-    "diffEditor.ignoreTrimWhitespace": false,
+    "Ubuntu-20.04 (WSL)": {
+      "path": "C:\\WINDOWS\\System32\\wsl.exe",
+      "args": [
+        "-d",
+        "Ubuntu-20.04"
+      ]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Ubuntu-20.04 (WSL)",
+  // Neovim settings
+  "vscode-neovim.neovimExecutablePaths.linux": "/home/jakedern/bin/nvim.appimage",
+  "vscode-neovim.neovimExecutablePaths.win32": "/home/jakedern/bin/nvim.appimage",
+  "vscode-neovim.useWSL": true,
+  "vscode-neovim.logLevel": "debug",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  // Workbench
+  "workbench.colorTheme": "Tokyo Night",
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.editor.highlightModifiedTabs": true,
+  // Editor
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false,
+  "editor.fontSize": 18,
+  "diffEditor.ignoreTrimWhitespace": false,
 }
