@@ -48,13 +48,12 @@ fi
 # Bash aliases, .bash_aliases are sources by default in .bashrc
 # in most linux distributions
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+ROOT=$(git rev-parse --show-toplevel)
 
 # Symlink everything from overlay/ into home directory. --dotfiles
 # will replace any file starting with "dot-*" with ".*"
-stow --dotfiles $SCRIPT_DIR/overlay -t $HOME
-
-mkdir -p ~/repos
-mkdir -p ~/bin
+mkdir -p $HOME/repos $HOME/bin
+stow --dotfiles $ROOT/overlay -t $HOME
 
 # ========================================
 # Rust toolchain and programs
