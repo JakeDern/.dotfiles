@@ -53,11 +53,6 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 # will replace any file starting with "dot-*" with ".*"
 stow --dotfiles $SCRIPT_DIR/overlay -t $HOME
 
-# Some basic git stuff
-git config --global user.name "Jake Dern"
-git config --global user.email jakedern@yahoo.com
-git config --global core.editor "nvim"
-
 mkdir -p ~/repos
 mkdir -p ~/bin
 
