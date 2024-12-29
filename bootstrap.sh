@@ -14,21 +14,23 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # Version constants, probably take a look around and update these
-export NVM_VERSION=0.40.1
-export NVIM_VERSION=v0.10.3
+NVM_VERSION=0.40.1
+NVIM_VERSION=v0.10.3
+STOW_VERSION=2.4.1
 
 # Install common utils
 # Note: Any chars after \ including whitespace will break the multiline string.
-# libfuse2 is a library required to run app images on > 22.04
+#
+# libfuse2 - A library required to run app images on > 22.04
 sudo apt-get update
 sudo apt-get install -y \
     build-essential \
-    stow \
     curl \
     libfuse2 \
     fd-find \
     git \
     zsh \
+    stow \
 
 # Install oh my zsh
 if [ ! -d $HOME/.oh-my-zsh ]; then 
@@ -36,6 +38,30 @@ if [ ! -d $HOME/.oh-my-zsh ]; then
     # Sets default shell to zsh (should be done by the oh my zsh installer)
     # chsh -s $(which zsh)
 fi
+
+# ========================================
+# Stow 
+# ========================================
+
+# Need version at least 2.4.1 which has some bugfixes
+# in order to handle directories properly. However installing
+# from source on v2.4.1 doesn't even work properly and installs 2.3.1 
+# Maybe if the default version through apt-get is ever 2.4.1 I can rename
+# that directory to dot-config instead of .config
+# STOW_DIR=$HOME/.local/share/stow
+# if ! command -v stow &> /dev/null; then
+#     [ -s "$STOW_DIR" ] && git clone https://github.com/JakeDern/stow.git $STOW_DIR
+#
+#     # These installation instructions come from stow documentation
+#     # in an MD file.
+#     pushd $STOW_DIR
+#     autoreconf -iv
+#
+#     # Stow is installed to prefix/bin
+#     ./configure --prefix=$HOME
+#     make install
+#     popd
+# fi
 
 # ========================================
 # General terminal setup
@@ -61,11 +87,13 @@ ln -rsf $ROOT/neovim/nvim ~/.config
 # ========================================
 
 FZF_DIR=$HOME/.local/share/fzf
-git clone https://github.com/junegunn/fzf.git $FZF_DIR
+if ! command -v cargo &> /dev/null; then
+    git clone https://github.com/junegunn/fzf.git $FZF_DIR
 
-# Installation script takes care of everything including updating
-# bash/zsh profile, enabling keybinds, and setting up completions
-$FZF_DIR/install
+    # Installation script takes care of everything including updating
+    # bash/zsh profile, enabling keybinds, and setting up completions
+    $FZF_DIR/install
+fi
 
 # ========================================
 # Rust toolchain and programs
@@ -91,7 +119,7 @@ fi
 
 # ripgrep versions are typically pretty old when installed
 # via package managers. May as well do it from source.
-if ! command -v ripgrep &> /dev/null; then
+if ! command -v rg &> /dev/null; then
     echo "Ripgrep not found"
     cargo install ripgrep
 else
@@ -120,8 +148,6 @@ fi
 # ========================================
 # Neovim setup
 # ========================================
-NVIM_DIR=$(realpath "$SCRIPT_DIR/../neovim/nvim")
-
 if ! command -v nvim &> /dev/null; then
     echo "neovim not found"
     TEMP=$(mktemp -d)
