@@ -1,0 +1,42 @@
+themes {
+    tokyo-night-2 {
+        fg 169 177 214
+        bg 148 93 0
+        black 56 62 90
+        red 249 51 87
+        green 158 206 106
+        yellow 224 175 104
+        blue 122 162 247
+        magenta 187 154 247
+        cyan 42 195 222
+        white 192 202 245
+        orange 255 158 100
+    }
+}
+
+theme "tokyo-night-2"
+
+default_mode "locked"
+
+// keybinds clear-defaults=true {
+keybinds {
+    // Always go to tmux from any mode with esc. Tmux
+    // is basically my nvim normal mode
+    shared_except "locked" {
+        bind "Insert" { GoToTab 1; SwitchToMode "Locked"; }
+        bind "Esc" { SwitchToMode "tmux"; }
+        bind "Ctrl h" { MoveFocus "Left"; }
+        bind "Ctrl l" { MoveFocus "Right"; }
+        bind "Ctrl j" { MoveFocus "Down"; }
+        bind "Ctrl k" { MoveFocus "Up"; }
+        bind "Ctrl d" { Detach; }
+        bind "Ctrl g" { SwitchToMode "Locked"; }
+    }
+    
+    // Nvim tab will always run in locked mode. Need one 
+    // special key to get out of there.
+    locked {
+        bind "Insert" { GoToTab 2; SwitchToMode "Normal"; }
+        bind "Ctrl d" { Detach; }
+    }
+}
