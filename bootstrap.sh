@@ -127,6 +127,22 @@ else
     echo "Ripgrep already installed"
 fi
 
+# fd-find - Better find written in rust
+if ! command -v fdfind &> /dev/null; then
+    echo "fd not found"
+    cargo install fd-find
+else
+    echo "fd-find already installed"
+fi
+
+# bat - For previewing files
+if ! command -v bat &> /dev/null; then
+    echo "bat not found"
+    cargo install --locked bat
+else
+    echo "bat already installed"
+fi
+
 # ========================================
 # Miscellaneous dependencies
 # ========================================
