@@ -1,8 +1,19 @@
 local fzf = require('fzf-lua')
+local actions = fzf.actions
 fzf.setup({
   winopts = {
     preview = {
       layout = 'horizontal'
+    }
+  },
+  actions = {
+    files = {
+      ["enter"]  = actions.file_edit_or_qf,
+      ["alt-s"]  = actions.file_split,
+      ["alt-v"]  = actions.file_vsplit,
+      ["ctrl-t"] = actions.file_tabedit,
+      ["ctrl-q"] = actions.file_sel_to_qf,
+      ["ctrl-Q"] = actions.file_sel_to_ll,
     }
   }
 })
