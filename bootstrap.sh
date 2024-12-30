@@ -28,7 +28,6 @@ sudo apt-get install -y \
     curl \
     fd \
     libfuse2 \
-    fd-find \
     git \
     zsh \
     stow \
