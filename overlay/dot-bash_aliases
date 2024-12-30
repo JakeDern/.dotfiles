@@ -25,3 +25,5 @@ alias zjs='zellij-sessionizer'
 # Kubectl
 alias k='kubectl'
 
+# fd
+alias fd='fdfind'
