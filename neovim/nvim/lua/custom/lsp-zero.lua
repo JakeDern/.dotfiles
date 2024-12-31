@@ -33,7 +33,7 @@ local override_keymaps = {
 }
 
 local apply_keymaps = function(_, bufnr)
-  local telescope = require('telescope.builtin')
+  local fzf = require('fzf-lua')
   key_set("n", "gt", vim.lsp.buf.type_definition, bufnr)
   key_set("n", "K", vim.lsp.buf.hover, bufnr)
   key_set("n", "<leader>r", vim.lsp.buf.rename, bufnr)
@@ -43,12 +43,16 @@ local apply_keymaps = function(_, bufnr)
   key_set("n", "<leader>dj", vim.diagnostic.goto_next, bufnr)
   key_set("n", "<leader>dk", vim.diagnostic.goto_prev, bufnr)
   key_set("n", "<leader>dh", vim.diagnostic.open_float, bufnr)
-  key_set("n", "<leader>dl", telescope.diagnostics, bufnr)
+  -- key_set("n", "<leader>dl", telescope.diagnostics, bufnr)
+  key_set("n", "<leader>dl", fzf.diagnostics_document, bufnr)
+  key_set("n", "<leader>dw", fzf.diagnostics_workspace, bufnr)
 
   -- References, definitions
-  key_set("n", "gr", telescope.lsp_references, bufnr)
+  -- key_set("n", "gr", telescope.lsp_references, bufnr)
+  key_set("n", "gr", fzf.lsp_references, bufnr)
   key_set("n", "gd", vim.lsp.buf.definition, bufnr)
-  key_set("n", "gi", telescope.lsp_implementations, bufnr)
+  -- key_set("n", "gi", telescope.lsp_implementations, bufnr)
+  key_set("n", "gi", fzf.lsp_implementations, bufnr)
 end
 
 -- Neodev setup must be done before lspconfig, so putting it first so that

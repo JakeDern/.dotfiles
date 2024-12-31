@@ -24,4 +24,3 @@ alias zjs='zellij-sessionizer'
 
 # Kubectl
 alias k='kubectl'
-

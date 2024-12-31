@@ -2,6 +2,7 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
+    enabled = true,
     dependencies = { 'nvim-lua/plenary.nvim' },
     -- config is run when the plugin is loaded
     config = function()
