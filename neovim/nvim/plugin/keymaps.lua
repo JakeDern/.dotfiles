@@ -30,5 +30,5 @@ vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decreas
 vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
 -- Remap split window right and down
-vim.keymap.set("n", "<leader>s", "<C-W>s", { desc = "Split window below", remap = true })
-vim.keymap.set("n", "<leader>v", "<C-W>v", { desc = "Split window right", remap = true })
+vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
+vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
