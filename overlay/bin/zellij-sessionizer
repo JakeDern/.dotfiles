@@ -7,10 +7,8 @@ function attach_session() {
     local session_name=$(basename "$session_root" | tr . _)
     cd $session_root
     if ! zellij list-sessions --short | grep -wxq "$session_name" ; then
-        echo "Not attaching" $session_name
         zellij --session $session_name --new-session-with-layout ~/.config/zellij/layouts/project_layout.kdl options --default-mode locked
     else
-        echo "Attaching" $session_name
         zellij attach $session_name
     fi
 }
