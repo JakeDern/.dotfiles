@@ -1,21 +1,54 @@
 local fzf = require('fzf-lua')
 local actions = fzf.actions
 fzf.setup({
-  winopts = {
-    preview = {
-      layout = 'horizontal'
-    }
+  { "default-title" }, -- base profile
+  fzf_colors = {
+    ["fg"] = { "fg", "TelescopeNormal" },
+    ["bg"] = { "bg", "TelescopeNormal" },
+    ["hl"] = { "fg", "TelescopeMatching" },
+    ["fg+"] = { "fg", "TelescopeSelection" },
+    ["bg+"] = { "bg", "TelescopeSelection" },
+    ["hl+"] = { "fg", "TelescopeMatching" },
+    ["info"] = { "fg", "TelescopeMultiSelection" },
+    ["border"] = { "fg", "TelescopeBorder" },
+    ["gutter"] = "-1",
+    ["query"] = { "fg", "TelescopePromptNormal" },
+    ["prompt"] = { "fg", "TelescopePromptPrefix" },
+    ["pointer"] = { "fg", "TelescopeSelectionCaret" },
+    ["marker"] = { "fg", "TelescopeSelectionCaret" },
+    ["header"] = { "fg", "TelescopeTitle" },
   },
-  actions = {
+  lsp        = {
+    jump_to_single_result = true,
+    jump_to_single_result_action = actions.file_edit,
+  },
+  keymap     = {
+    builtin = {
+      true,
+      ["<C-d>"] = "preview-page-down",
+      ["<C-u>"] = "preview-page-up",
+    },
+    fzf = {
+      true,
+      ["ctrl-d"] = "preview-page-down",
+      ["ctrl-u"] = "preview-page-up",
+      ["ctrl-q"] = "select-all+accept",
+    },
+  },
+  actions    = {
     files = {
       ["enter"]  = actions.file_edit_or_qf,
-      ["alt-s"]  = actions.file_split,
-      ["alt-v"]  = actions.file_vsplit,
+      ["ctrl-x"] = actions.file_split,
+      ["ctrl-v"] = actions.file_vsplit,
       ["ctrl-t"] = actions.file_tabedit,
-      ["ctrl-q"] = actions.file_sel_to_qf,
-      ["ctrl-Q"] = actions.file_sel_to_ll,
-    }
-  }
+      ["alt-q"]  = actions.file_sel_to_qf,
+    },
+  },
+  buffers    = {
+    keymap = { builtin = { ["<C-d>"] = false } },
+    actions = { ["ctrl-x"] = false, ["ctrl-d"] = { actions.buf_del, actions.resume } },
+  },
+  defaults   = { git_icons = false },
 })
 
 vim.keymap.set('n', '<leader><leader>', fzf.files, { desc = 'Find files' })
