@@ -26,7 +26,6 @@ sudo apt-get update
 sudo apt-get install -y \
     build-essential \
     curl \
-    fd \
     libfuse2 \
     git \
     zsh \
