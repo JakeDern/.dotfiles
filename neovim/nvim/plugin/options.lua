@@ -1,5 +1,8 @@
 -- vim.opt.guicursor = "n-v-c-i:block"
 
+-- Need this for tiny-inline-diagnostic so that they don't fight
+vim.diagnostic.config({ virtual_text = false })
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 

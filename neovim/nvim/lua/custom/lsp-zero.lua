@@ -40,9 +40,11 @@ local apply_keymaps = function(_, bufnr)
   key_set("n", "<leader>.", vim.lsp.buf.code_action, bufnr)
 
   -- Diagnostics
-  key_set("n", "<leader>dj", vim.diagnostic.goto_next, bufnr)
-  key_set("n", "<leader>dk", vim.diagnostic.goto_prev, bufnr)
+  key_set("n", "<leader>dj", function() vim.diagnostic.goto_next({ float = false }) end, bufnr)
+  -- key_set("n", "<leader>dk", vim.diagnostic.goto_prev, bufnr)
+  key_set("n", "<leader>dk", function() vim.diagnostic.goto_prev({ float = false }) end, bufnr)
   key_set("n", "<leader>dh", vim.diagnostic.open_float, bufnr)
+  -- TODO: Configure this in FZF
   -- key_set("n", "<leader>dl", telescope.diagnostics, bufnr)
   key_set("n", "<leader>dl", fzf.diagnostics_document, bufnr)
   key_set("n", "<leader>dw", fzf.diagnostics_workspace, bufnr)
@@ -129,6 +131,17 @@ require("mason-lspconfig").setup({
   handlers = {
     -- Default handler is the first one
     lsp_zero.default_setup,
+    ["rust_analyzer"] = function()
+      require('lspconfig').rust_analyzer.setup {
+        settings = {
+          ['rust-analyzer'] = {
+            checkOnSave = {
+              command = "clippy"
+            }
+          }
+        }
+      }
+    end,
     ["omnisharp"] = function()
       -- at this point lsp-zero has already applied
       -- the "capabilities" options to lspconfig's defaults.
