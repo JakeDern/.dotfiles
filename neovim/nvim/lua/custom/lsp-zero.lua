@@ -78,8 +78,14 @@ lsp_zero.on_attach(function(client, bufnr)
 
   -- Organize imports on save if the client supports it
   local augroup = vim.api.nvim_create_augroup("JD_LSP", { clear = true })
+
+  -- Enable inlay hints
+  if vim.lsp.inlay_hint then
+    vim.lsp.inlay_hint.enable(true, { 0 })
+  end
+
   if client.supports_method("source.organize_imports_on_format") then
-    print("Adding organize imports autocmd")
+    -- print("Adding organize imports autocmd")
     vim.api.nvim_create_autocmd('BufWritePre', {
       group = augroup,
       desc = ("Organize imports for '%s'"):format(client.name),
