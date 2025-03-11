@@ -81,11 +81,10 @@ lsp_zero.on_attach(function(client, bufnr)
 
   -- Enable inlay hints
   if vim.lsp.inlay_hint then
-    vim.lsp.inlay_hint.enable(true, { 0 })
+    vim.lsp.inlay_hint.enable(false, { 0 })
   end
 
   if client.supports_method("source.organize_imports_on_format") then
-    -- print("Adding organize imports autocmd")
     vim.api.nvim_create_autocmd('BufWritePre', {
       group = augroup,
       desc = ("Organize imports for '%s'"):format(client.name),
@@ -141,6 +140,20 @@ require("mason-lspconfig").setup({
       require('lspconfig').rust_analyzer.setup {
         settings = {
           ['rust-analyzer'] = {
+            imports = {
+              granularity = {
+                group = "module",
+              },
+              prefix = "self",
+            },
+            cargo = {
+              buildScripts = {
+                enable = true,
+              },
+            },
+            procMacro = {
+              enable = true
+            },
             checkOnSave = {
               command = "clippy"
             }

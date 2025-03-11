@@ -16,6 +16,7 @@ alias gp='git push'
 alias grh='git reset --hard'
 alias grs='git reset --soft'
 alias gco='git checkout'
+alias gg='git add -A && git commit -m "c" && git push'
 
 # Zellij
 alias zj='zellij'
