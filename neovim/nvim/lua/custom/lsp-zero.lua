@@ -150,13 +150,12 @@ require("mason-lspconfig").setup({
               buildScripts = {
                 enable = true,
               },
+              allFeatures = true,
             },
             procMacro = {
               enable = true
             },
-            checkOnSave = {
-              command = "clippy"
-            }
+            checkOnSave = true
           }
         }
       }
