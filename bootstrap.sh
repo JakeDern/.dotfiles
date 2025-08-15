@@ -15,7 +15,7 @@ fi
 
 # Version constants, probably take a look around and update these
 NVM_VERSION=0.40.1
-NVIM_VERSION=v0.10.3
+NVIM_VERSION=v0.11.3
 STOW_VERSION=2.4.1
 
 # Install common utils
@@ -170,8 +170,8 @@ if ! command -v nvim &> /dev/null; then
     pushd $TEMP
     # Note -L option is required to follow re-directs. Otherwise you get an empty file
     # -O option saves the file to it's default name "nvim.appimage"
-    curl -LO https://github.com/neovim/neovim/releases/download/${NVIM_VERSION}/nvim.appimage
-    mv nvim.appimage ~/bin/nvim
+    curl -LO https://github.com/neovim/neovim/releases/download/${NVIM_VERSION}/nvim-linux-x86_64.appimage
+    mv nvim-linux-x86_64.appimage ~/bin/nvim
     popd
 
     chmod +x ~/bin/nvim

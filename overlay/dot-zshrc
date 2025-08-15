@@ -118,3 +118,4 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 export PATH=$HOME/.local/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

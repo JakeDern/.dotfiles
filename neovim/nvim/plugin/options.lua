@@ -24,10 +24,11 @@ vim.opt.undofile = true
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-vim.opt.showmatch = false -- This was annoying
+vim.opt.showmatch = false    -- This was annoying
 
-vim.opt.scrolloff = 10    -- ALways have 10 lines below the cursor
+vim.opt.scrolloff = 10       -- ALways have 10 lines below the cursor
 vim.opt.signcolumn = "yes"
+vim.opt.colorcolumn = "80"   -- Show a color column at 80 characters
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 100     -- Update window faster
 vim.opt.autowrite = true     -- Automatically writes before a lot of jumps to other files

@@ -2,10 +2,12 @@
     helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
 [user]
     name = Jake Dern
-    email = jakedern@yahoo.com
+	email = jakedern@yahoo.com
 [core]
     editor = nvim
 [push]
     autoSetupRemote = true
 [pull]
 	rebase = true
+[url "https://github.com/"]
+	insteadOf = git@github.com:

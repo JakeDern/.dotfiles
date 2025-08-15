@@ -57,10 +57,19 @@ local apply_keymaps = function(_, bufnr)
   key_set("n", "gi", fzf.lsp_implementations, bufnr)
 end
 
+-- For some reason bicepparam files are not properly detected
+vim.filetype.add({
+  extension = {
+    bicepparam = "bicep-params",
+    bicep = "bicep",
+  }
+})
+
 -- Neodev setup must be done before lspconfig, so putting it first so that
 -- whatever lsp_zero does will be accounted for
 require("neodev").setup({})
 local lsp_zero = require('lsp-zero')
+
 
 -- This configures the on_attach function for lsp-zero, this function
 -- will be called when lsp_zero calls lsp-config to do setup
