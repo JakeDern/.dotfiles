@@ -1,0 +1,72 @@
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+// Default keymaps: https://github.com/zed-industries/zed/blob/main/assets/keymaps/default-windows.json
+[
+    // General Workspace
+    {
+        "context": "Workspace",
+        "bindings": {
+            "ctrl-j": "menu::SelectNext",
+            // TODO: This does not work in the command pallette for some reason
+            "ctrl-k": "menu::SelectPrevious"
+        }
+    },
+
+    // Completions
+    {
+        "context": "Editor && menu",
+        "bindings": {
+            "ctrl-y": "editor::ConfirmCompletion",
+            "ctrl-j": "editor::ContextMenuNext",
+            "ctrl-k": "editor::ContextMenuPrevious"
+        }
+    },
+
+    {
+        "context": "Editor",
+        "bindings": {
+            // Editor navigation
+            "ctrl-t": "pane::GoBack",
+            "ctrl-l": "workspace::ActivateNextPane",
+            "ctrl-h": "workspace::ActivatePreviousPane"
+        }
+    },
+
+    // Normal Mode
+    {
+        "context": "Editor && vim_mode == normal",
+        "bindings": {
+            // Search
+            "space f s": "workspace::NewSearch",
+            "space space": "file_finder::Toggle",
+
+            // Editor navigation
+            // TODO: Can we make this work to get in and out of project-wide
+            // search or settings editor panes
+            "shift-l": "pane::ActivateNextItem",
+            "shift-h": "pane::ActivatePreviousItem",
+
+            // Splits
+            "space |": "workspace::NewFileSplitVertical",
+            "space -": "workspace::NewFileSplitHorizontal",
+
+            // Code navigation
+            "g d": "editor::GoToDefinition",
+            "g D": "editor::GoToDeclaration",
+            "g t": "editor::GoToTypeDefinition",
+            "g i": "editor::GoToImplementation",
+
+            // Actions
+            "space .": "editor::ToggleCodeActions",
+            "space r": "editor::Rename",
+
+            // Diagnostics
+            "space d j": "editor::GoToDiagnostic",
+            "space d k": "editor::GoToPreviousDiagnostic",
+            "space d l": "editor::ToggleDiagnostics"
+        }
+    }
+]
