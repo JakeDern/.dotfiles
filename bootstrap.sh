@@ -15,7 +15,7 @@ fi
 
 # Version constants, probably take a look around and update these
 NVM_VERSION=0.40.1
-NVIM_VERSION=v0.11.3
+NVIM_VERSION=v0.11.5
 STOW_VERSION=2.4.1
 
 # Install common utils

@@ -19,8 +19,8 @@ fzf.setup({
     ["header"] = { "fg", "TelescopeTitle" },
   },
   lsp        = {
-    jump_to_single_result = true,
-    jump_to_single_result_action = actions.file_edit,
+    jump1 = true,
+    jump1_action = actions.file_edit,
   },
   keymap     = {
     builtin = {
