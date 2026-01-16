@@ -41,7 +41,8 @@
         "bindings": {
             // Search
             "space f s": "workspace::NewSearch",
-            "space space": "file_finder::Toggle",
+            "space l": "file_finder::Toggle",
+            "k k": "file_finder::Toggle",
 
             // Editor navigation
             // TODO: Can we make this work to get in and out of project-wide
