@@ -65,9 +65,6 @@ vim.filetype.add({
   }
 })
 
--- Neodev setup must be done before lspconfig, so putting it first so that
--- whatever lsp_zero does will be accounted for
-require("neodev").setup({})
 local lsp_zero = require('lsp-zero')
 
 
