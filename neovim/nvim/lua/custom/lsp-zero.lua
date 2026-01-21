@@ -40,9 +40,12 @@ local apply_keymaps = function(_, bufnr)
   key_set("n", "<leader>.", vim.lsp.buf.code_action, bufnr)
 
   -- Diagnostics
-  key_set("n", "<leader>dj", function() vim.diagnostic.goto_next({ float = false }) end, bufnr)
-  -- key_set("n", "<leader>dk", vim.diagnostic.goto_prev, bufnr)
-  key_set("n", "<leader>dk", function() vim.diagnostic.goto_prev({ float = false }) end, bufnr)
+  key_set("n", "<leader>dj", function()
+    vim.diagnostic.jump({ count = 1 })
+  end, bufnr)
+  key_set("n", "<leader>dk", function()
+    vim.diagnostic.jump({ count = -1 })
+  end, bufnr)
   key_set("n", "<leader>dh", vim.diagnostic.open_float, bufnr)
   -- TODO: Configure this in FZF
   -- key_set("n", "<leader>dl", telescope.diagnostics, bufnr)
@@ -66,7 +69,6 @@ vim.filetype.add({
 })
 
 local lsp_zero = require('lsp-zero')
-
 
 -- This configures the on_attach function for lsp-zero, this function
 -- will be called when lsp_zero calls lsp-config to do setup
