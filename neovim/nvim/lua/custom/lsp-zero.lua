@@ -24,12 +24,6 @@ function Dump(tbl, indent, level)
 end
 
 local override_keymaps = {
-  ['omnisharp'] = function(_, bufnr)
-    local omnisharp_extended = require('omnisharp_extended')
-    key_set("n", "gd", omnisharp_extended.lsp_definitions, bufnr)
-    key_set("n", "gr", omnisharp_extended.telescope_lsp_references, bufnr)
-    key_set("n", "gi", omnisharp_extended.telescope_lsp_implementation, bufnr)
-  end
 }
 
 local apply_keymaps = function(_, bufnr)
@@ -167,19 +161,6 @@ require("mason-lspconfig").setup({
           }
         }
       }
-    end,
-    ["omnisharp"] = function()
-      -- at this point lsp-zero has already applied
-      -- the "capabilities" options to lspconfig's defaults.
-      -- so there is no need to add them here manually.
-      require('lspconfig').omnisharp.setup({
-        handlers = {
-          ["textDocument/definition"] = require('omnisharp_extended').handler,
-        },
-        organize_imports_on_format = true,
-        enable_import_completion = true,
-        complete_using_metadata = true
-      })
     end
   }
 })
