@@ -2,6 +2,10 @@
 return {
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   { 'tpope/vim-fugitive' },
+  -- Human readable tables with `inspect(myTable)`
+  -- local inspect = require('vim.inspect')
+  -- inspect({ [foo] = 'bar' })
+  { 'kikito/inspect.lua' },
   {
     'numToStr/Comment.nvim',
     opts = {

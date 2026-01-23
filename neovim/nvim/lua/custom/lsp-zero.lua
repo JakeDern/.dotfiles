@@ -2,27 +2,6 @@ local key_set = function(mode, key, func, bufnr)
   vim.keymap.set(mode, key, func, { buffer = bufnr })
 end
 
--- Prints out a table
-function Dump(tbl, indent, level)
-  if not indent then indent = 0 end
-  if not level then level = 0 end
-  if level > 3 then return end
-
-  for k, v in pairs(tbl) do
-    local formatting = string.rep("  ", indent) .. k .. ": "
-    if type(v) == "table" then
-      print(formatting)
-      Dump(v, indent + 1, level + 1)
-    elseif type(v) == 'boolean' then
-      print(formatting .. tostring(v))
-    elseif type(v) == 'function' then
-      print("Function")
-    elseif v ~= nil then
-      print(formatting .. tostring(v))
-    end
-  end
-end
-
 local override_keymaps = {
 }
 
@@ -63,7 +42,6 @@ vim.filetype.add({
 })
 
 local lsp_zero = require('lsp-zero')
-
 -- This configures the on_attach function for lsp-zero, this function
 -- will be called when lsp_zero calls lsp-config to do setup
 lsp_zero.on_attach(function(client, bufnr)

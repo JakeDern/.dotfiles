@@ -7,7 +7,6 @@ return {
     end,
     dependencies = {
       { 'neovim/nvim-lspconfig' },
-      { 'kikito/inspect.lua' },
       { 'zbirenbaum/copilot-cmp' },
       { 'hrsh7th/cmp-nvim-lsp' },
       {
