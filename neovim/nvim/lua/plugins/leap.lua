@@ -3,11 +3,6 @@ local setup = function()
   vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap)')
   vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
 
-  -- IMPORTANT: These will override cut functionality
-  -- if you don't remove them
-  vim.keymap.del({ "x", "o" }, "x")
-  vim.keymap.del({ "x", "o" }, "X")
-
   -- There's some race condition with highlight colors that this
   -- solves
   leap.init_highlight(true)
