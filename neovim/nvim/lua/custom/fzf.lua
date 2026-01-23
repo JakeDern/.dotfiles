@@ -48,6 +48,12 @@ fzf.setup({
     keymap = { builtin = { ["<C-d>"] = false } },
     actions = { ["ctrl-x"] = false, ["ctrl-d"] = { actions.buf_del, actions.resume } },
   },
+  files      = {
+    hidden = true
+  },
+  grep       = {
+    hidden = true
+  },
   defaults   = { git_icons = false },
 })
 
