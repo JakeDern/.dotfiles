@@ -14,10 +14,6 @@ for _, lsp in ipairs(lsps) do
 end
 
 
-local key_set = function(mode, key, func, bufnr)
-  vim.keymap.set(mode, key, func, { buffer = bufnr })
-end
-
 -- Set the symbols for diagnostics in the lane
 local ds = vim.diagnostic.severity
 vim.diagnostic.config({
@@ -38,6 +34,10 @@ local group = vim.api.nvim_create_augroup('jakedern.lsp', {})
 vim.api.nvim_create_autocmd('LspAttach', {
   group = group,
   callback = function(args)
+    local key_set = function(mode, key, func, bufnr)
+      vim.keymap.set(mode, key, func, { buffer = bufnr })
+    end
+
     print("Setting up keybindings!")
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     print(client.name)

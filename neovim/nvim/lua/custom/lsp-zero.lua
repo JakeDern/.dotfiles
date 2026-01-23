@@ -1,14 +1,4 @@
 local lsp_zero = require('lsp-zero')
--- This configures the on_attach function for lsp-zero, this function
--- will be called when lsp_zero calls lsp-config to do setup
-lsp_zero.on_attach(function(client, bufnr)
-  -- Enable inlay hints
-  if vim.lsp.inlay_hint then
-    vim.lsp.inlay_hint.enable(false, { 0 })
-  end
-end)
-
-
 -- Mason docs state to set up 'mason' before 'mason-lspconfig'
 -- There isn't really any configuration for mason except for
 -- UI symbols and registries which we don't want to override
@@ -17,44 +7,6 @@ end)
 -- mason-lspconfig gives all the nice things like LspInstall,
 -- automatic setup of servers, etc.
 require("mason").setup()
-
--- TODO: Add this rust analyzer config and any other overrides to /lsp/*.lua
--- so that the configurations are merged in after the defaults.
--- require("mason-lspconfig").setup({
---   ensure_installed = {
---     "gopls",
---     "jsonls",
---     "yamlls"
---   },
---   handlers = {
---     -- Default handler is the first one
---     lsp_zero.default_setup,
---     ["rust_analyzer"] = function()
---       require('lspconfig').rust_analyzer.setup {
---         settings = {
---           ['rust-analyzer'] = {
---             imports = {
---               granularity = {
---                 group = "module",
---               },
---               prefix = "self",
---             },
---             cargo = {
---               buildScripts = {
---                 enable = true,
---               },
---               allFeatures = true,
---             },
---             procMacro = {
---               enable = true
---             },
---             checkOnSave = true
---           }
---         }
---       }
---     end
---   }
--- })
 
 local cmp = require('cmp')
 require('copilot_cmp').setup()
