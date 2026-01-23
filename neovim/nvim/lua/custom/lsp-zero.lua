@@ -1,11 +1,3 @@
--- For some reason bicepparam files are not properly detected
-vim.filetype.add({
-  extension = {
-    bicepparam = "bicep-params",
-    bicep = "bicep",
-  }
-})
-
 local lsp_zero = require('lsp-zero')
 -- This configures the on_attach function for lsp-zero, this function
 -- will be called when lsp_zero calls lsp-config to do setup
