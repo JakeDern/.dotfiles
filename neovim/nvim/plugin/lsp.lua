@@ -42,7 +42,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     print(client.name)
 
-    -- TODO: Add all keybindings here
     local bufnr = args.buf
     local fzf = require('fzf-lua')
     key_set("n", "gt", vim.lsp.buf.type_definition, bufnr)
@@ -66,13 +65,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     key_set("n", "gd", vim.lsp.buf.definition, bufnr)
     key_set("n", "gi", fzf.lsp_implementations, bufnr)
 
-
-    -- TODO: See if the below will work with gopls that seems to have it's own
-    -- special page on organize imports:
-    --    https://github.com/golang/tools/blob/master/gopls/doc/vim.md#imports-and-formatting
-
-
-    -- Auto-format ("lint") on save.
+    -- Auto-format on save.
+    --
+    -- Below comment is from `h: lsp`, not sure if it's accurate or if we should
+    -- remove the first condition here...
+    --
     -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
     if not client:supports_method('textDocument/willSaveWaitUntil')
         and client:supports_method('textDocument/formatting') then
