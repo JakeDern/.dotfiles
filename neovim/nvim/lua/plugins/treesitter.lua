@@ -46,7 +46,7 @@ return {
         "python",
         "query",
         "regex",
-        -- "toml",
+        "toml",
         -- "tsx",
         "typescript",
         "vim",
