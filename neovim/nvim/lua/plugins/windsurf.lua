@@ -7,7 +7,10 @@ return {
   config = function()
     require("codeium").setup({
       virtual_text = {
-        enabled = true
+        enabled = true,
+        key_bindings = {
+          accept = "<C-y>"
+        }
       }
     })
   end
