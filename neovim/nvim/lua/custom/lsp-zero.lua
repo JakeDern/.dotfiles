@@ -129,41 +129,44 @@ lsp_zero.set_sign_icons({
 -- mason-lspconfig gives all the nice things like LspInstall,
 -- automatic setup of servers, etc.
 require("mason").setup()
-require("mason-lspconfig").setup({
-  ensure_installed = {
-    "gopls",
-    "jsonls",
-    "yamlls"
-  },
-  handlers = {
-    -- Default handler is the first one
-    lsp_zero.default_setup,
-    ["rust_analyzer"] = function()
-      require('lspconfig').rust_analyzer.setup {
-        settings = {
-          ['rust-analyzer'] = {
-            imports = {
-              granularity = {
-                group = "module",
-              },
-              prefix = "self",
-            },
-            cargo = {
-              buildScripts = {
-                enable = true,
-              },
-              allFeatures = true,
-            },
-            procMacro = {
-              enable = true
-            },
-            checkOnSave = true
-          }
-        }
-      }
-    end
-  }
-})
+
+-- TODO: Add this rust analyzer config and any other overrides to /lsp/*.lua
+-- so that the configurations are merged in after the defaults.
+-- require("mason-lspconfig").setup({
+--   ensure_installed = {
+--     "gopls",
+--     "jsonls",
+--     "yamlls"
+--   },
+--   handlers = {
+--     -- Default handler is the first one
+--     lsp_zero.default_setup,
+--     ["rust_analyzer"] = function()
+--       require('lspconfig').rust_analyzer.setup {
+--         settings = {
+--           ['rust-analyzer'] = {
+--             imports = {
+--               granularity = {
+--                 group = "module",
+--               },
+--               prefix = "self",
+--             },
+--             cargo = {
+--               buildScripts = {
+--                 enable = true,
+--               },
+--               allFeatures = true,
+--             },
+--             procMacro = {
+--               enable = true
+--             },
+--             checkOnSave = true
+--           }
+--         }
+--       }
+--     end
+--   }
+-- })
 
 local cmp = require('cmp')
 require('copilot_cmp').setup()
