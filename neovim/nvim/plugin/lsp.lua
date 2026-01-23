@@ -38,9 +38,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.keymap.set(mode, key, func, { buffer = bufnr })
     end
 
-    print("Setting up keybindings!")
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-    print(client.name)
 
     local bufnr = args.buf
     local fzf = require('fzf-lua')
