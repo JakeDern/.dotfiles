@@ -11,6 +11,9 @@ return {
         },
         prefix = "self",
       },
+      diagnostics = {
+        enable = true,
+      },
       cargo = {
         buildScripts = {
           enable = true,
@@ -20,7 +23,10 @@ return {
       procMacro = {
         enable = true
       },
-      checkOnSave = true
+      checkOnSave = {
+        enable = true,
+        command = "clippy"
+      }
     }
   }
 }
