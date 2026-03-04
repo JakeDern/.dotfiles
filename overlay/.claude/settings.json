@@ -1,0 +1,22 @@
+{
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "permissions": {
+    "allow": [
+      "Edit(~/repos/**)",
+      "Write(~/repos/**)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(mkdir:*)",
+      "Bash(ls:*)",
+      "Bash(cargo test:*)",
+      "Bash(cargo metadata:*)",
+      "Bash(cargo check:*)",
+      "Bash(cargo bench:*)"
+    ]
+  },
+  "additionalDirectories": [
+    "/home/jakedern/repos/**"
+  ]
+}

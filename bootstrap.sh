@@ -78,7 +78,7 @@ stow --dotfiles overlay -t $HOME
 popd
 
 # Not sure how to use stow to do an entire directory, so linking
-# the nvim stuff by hand for now
+# some stuff by hand for now
 ln -rsf $ROOT/neovim/nvim ~/.config
 
 # ========================================
