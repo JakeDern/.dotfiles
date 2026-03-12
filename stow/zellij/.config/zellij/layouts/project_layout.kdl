@@ -10,15 +10,15 @@ layout {
         }
     }
     
+    tab name="terminal" {
+        pane
+    }
+
     tab name="nvim" focus=true {
         pane start_suspended=false {
             focus true
             command "nvim"
             args "."
         }
-    }
-
-    tab name="terminal" {
-        pane
     }
 }

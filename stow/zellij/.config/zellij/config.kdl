@@ -223,6 +223,7 @@ keybinds clear-defaults=true {
         bind "esc" { UndoRenamePane; SwitchToMode "pane"; }
     }
 }
+
 themes {
     tokyo-night-2 {
         fg 169 177 214

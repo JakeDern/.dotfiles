@@ -43,43 +43,17 @@ fi
 # ========================================
 
 # Need version at least 2.4.1 which has some bugfixes
-# in order to handle directories properly. However installing
-# from source on v2.4.1 doesn't even work properly and installs 2.3.1 
-# Maybe if the default version through apt-get is ever 2.4.1 I can rename
-# that directory to dot-config instead of .config
-# STOW_DIR=$HOME/.local/share/stow
-# if ! command -v stow &> /dev/null; then
-#     [ -s "$STOW_DIR" ] && git clone https://github.com/JakeDern/stow.git $STOW_DIR
-#
-#     # These installation instructions come from stow documentation
-#     # in an MD file.
-#     pushd $STOW_DIR
-#     autoreconf -iv
-#
-#     # Stow is installed to prefix/bin
-#     ./configure --prefix=$HOME
-#     make install
-#     popd
-# fi
-
-# ========================================
-# General terminal setup
-# ========================================
+# in order to handle directories properly. If the default version through 
+# apt-get is ever 2.4.1 I can rename directories to dot-config instead of .config
 
 # Bash aliases, .bash_aliases are sources by default in .bashrc
 # in most linux distributions
 ROOT=$(git rev-parse --show-toplevel)
 
-# Symlink everything from overlay/ into home directory. --dotfiles
+# Symlink everything into home directory. --dotfiles
 # will replace any file starting with "dot-*" with ".*"
 mkdir -p $HOME/repos $HOME/bin $HOME/.config $HOME/.local/share
-pushd $ROOT
-stow --dotfiles overlay -t $HOME
-popd
-
-# Not sure how to use stow to do an entire directory, so linking
-# some stuff by hand for now
-ln -rsf $ROOT/neovim/nvim ~/.config
+stow --dotfiles -d $ROOT/stow -t $HOME shell claude zellij zed neovim
 
 # ========================================
 # FZF

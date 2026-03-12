@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(git commit *)",
+      "Bash(git merge *)",
+      "Bash(git pull *)",
+      "Bash(git push *)",
+      "Bash(git rebase *)",
+      "Bash(git reset *)"
+    ],
+    "allow": [
+      "Edit(~/repos/**)",
+      "Write(~/repos/**)",
+      "Read(~/repos/**)",
+      "Bash(git diff *)",
+      "Bash(git status:*)",
+      "Bash(find *)",
+      "Bash(grep *)",
+      "Bash(mkdir:*)",
+      "Bash(ls *)",
+      "Bash(wc *)",
+      "Bash(cargo test *)",
+      "Bash(cargo metadata *)",
+      "Bash(cargo check *)",
+      "Bash(cargo bench *)"
+    ]
+  },
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true
+  },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true
+  },
+  "additionalDirectories": [
+    "/home/jakedern/repos/**"
+  ]
+}
