@@ -31,7 +31,12 @@
   },
   "sandbox": {
     "enabled": true,
-    "autoAllowBashIfSandboxed": true
+    "autoAllowBashIfSandboxed": true,
+    "filesystem": {
+      "allowWrite": [
+        "/tmp"
+      ]
+    }
   },
   "additionalDirectories": [
     "/home/jakedern/repos/**"
