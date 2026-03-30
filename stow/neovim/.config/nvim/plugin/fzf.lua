@@ -1,3 +1,8 @@
+vim.pack.add({
+  'https://github.com/nvim-tree/nvim-web-devicons', -- Dependency
+  'https://github.com/ibhagwan/fzf-lua',
+})
+
 local fzf = require('fzf-lua')
 local actions = fzf.actions
 fzf.setup({
