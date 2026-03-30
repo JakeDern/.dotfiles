@@ -4,7 +4,6 @@ vim.pack.add({
   'https://github.com/folke/lazydev.nvim',
 })
 
-require('lspconfig').setup()
 require('mason').setup()
 require('lazydev').setup({
   library = {

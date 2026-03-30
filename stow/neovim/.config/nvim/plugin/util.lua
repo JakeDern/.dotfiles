@@ -10,7 +10,7 @@ vim.pack.add({
 
 require('ibl').setup()
 
-local setup_commment = function()
+local setup_comment = function()
   require('Comment').setup()
   -- Maps Ctrl+/ to toggle single line comments
   -- Ctrl+/ is interpreted as <C-_> by Neovim

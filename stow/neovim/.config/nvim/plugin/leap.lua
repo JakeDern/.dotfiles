@@ -1,5 +1,5 @@
 vim.pack.add({
-  'https://github.com/ggandor/leap.nvim',
+  'https://codeberg.org/andyg/leap.nvim',
 })
 
 local leap = require('leap')
