@@ -7,4 +7,5 @@ vim.g.shell = "zsh"
 vim.pack.add({
   'https://github.com/folke/tokyonight.nvim',
 })
+require("tokyonight.colors").setup()
 vim.cmd([[colorscheme tokyonight]])
