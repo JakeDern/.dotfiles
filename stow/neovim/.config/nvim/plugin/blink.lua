@@ -1,3 +1,8 @@
+vim.pack.add({
+  'https://github.com/Exafunction/codeium.nvim',
+  'https://github.com/saghen/blink.cmp',
+})
+
 local blink = require('blink-cmp')
 blink.setup({
   -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
