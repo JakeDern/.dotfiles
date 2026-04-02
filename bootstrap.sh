@@ -99,6 +99,14 @@ else
     echo "Ripgrep already installed"
 fi
 
+# Tree sitter CLI required to compile grammars 
+if ! command -v tree-sitter &> /dev/null; then
+    echo "tree-sitter-cli not found"
+    cargo install --locked tree-sitter-cli
+else
+    echo "tree-sitter-cli already installed"
+fi
+
 # fd-find - Better find written in rust
 if ! command -v fdfind &> /dev/null; then
     echo "fd not found"
