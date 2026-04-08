@@ -22,6 +22,7 @@ STOW_VERSION=2.4.1
 # Note: Any chars after \ including whitespace will break the multiline string.
 #
 # libfuse2 - A library required to run app images on > 22.04
+# libclang-dev - Needed to compile tree-sitter-cli
 sudo apt-get update
 sudo apt-get install -y \
     build-essential \
@@ -30,6 +31,7 @@ sudo apt-get install -y \
     git \
     zsh \
     stow \
+    libclang-dev \
 
 # Install oh my zsh
 if [ ! -d $HOME/.oh-my-zsh ]; then 

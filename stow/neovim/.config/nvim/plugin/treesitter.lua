@@ -48,3 +48,18 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = { '*' },
   callback = function() pcall(vim.treesitter.start) end,
 })
+
+-- Quint
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'TSUpdate',
+  callback = function()
+    require('nvim-treesitter.parsers').quint = {
+      install_info = {
+        url = 'https://github.com/gruhn/tree-sitter-quint',
+        files = { 'parser.c' },
+        branch = 'release',
+        queries = 'queries'
+      },
+    }
+  end,
+})

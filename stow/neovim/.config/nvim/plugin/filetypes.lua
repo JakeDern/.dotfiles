@@ -5,3 +5,10 @@ vim.filetype.add({
     bicep = "bicep",
   }
 })
+
+-- Quint
+vim.filetype.add({
+  extension = {
+    qnt = "quint",
+  }
+})

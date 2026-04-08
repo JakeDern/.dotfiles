@@ -19,6 +19,7 @@ local lsps = {
   'lua_ls',
   'rust_analyzer',
   'yamlls',
+  'quint',
 }
 
 -- Enable all LSPs. This used to be provided by mason-lspconfig but this was
